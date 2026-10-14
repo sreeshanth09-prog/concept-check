@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context-Aware Intelligent Framework</title>
+
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --text: #172033;
+            --muted: #667085;
+            --border: #e3e8ef;
+
+            --blue: #2563eb;
+            --blue-soft: #eff6ff;
+
+            --purple: #7c3aed;
+            --purple-soft: #f5f3ff;
+
+            --green: #059669;
+            --green-soft: #ecfdf5;
+
+            --orange: #d97706;
+            --orange-soft: #fffbeb;
+
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+
+            --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* ---------------- HEADER ---------------- */
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 70px 0 65px;
+        }
+
+        .header-content {
+            max-width: 920px;
+        }
+
+        .header-label {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 13px;
+            border-radius: 30px;
+            background: var(--blue-soft);
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .05em;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.1;
+            letter-spacing: -1.7px;
+            max-width: 950px;
+        }
+
+        .header-description {
+            max-width: 800px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* ---------------- GENERAL ---------------- */
+
+        section {
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 32px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            letter-spacing: -.7px;
+        }
+
+        .section-heading p {
+            margin-top: 8px;
+            max-width: 780px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        /* ---------------- PROJECT IDEA ---------------- */
+
+        .idea-grid {
+            display: grid;
+            grid-template-columns: 1.45fr .75fr;
+            gap: 20px;
+        }
+
+        .idea-card {
+            padding: 30px;
+        }
+
+        .idea-card h3 {
+            font-size: 19px;
+            margin-bottom: 13px;
+        }
+
+        .idea-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .objective {
+            background: #172033;
+            color: white;
+            border-color: #172033;
+        }
+
+        .objective p {
+            color: #cbd5e1;
+        }
+
+        .objective .highlight {
+            display: block;
+            margin-top: 25px;
+            padding: 14px;
+            border-left: 3px solid #60a5fa;
+            background: rgba(255,255,255,.06);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ---------------- CORE IDEA ---------------- */
+
+        .core-flow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .core-item {
+            position: relative;
+            padding: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .core-item:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -19px;
+            top: 42%;
+            color: #98a2b3;
+            font-size: 22px;
+            z-index: 3;
+        }
+
+        .core-number {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 12px;
+            border-radius: 9px;
+            background: var(--blue-soft);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .core-item h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .core-item p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* ---------------- ARCHITECTURE ---------------- */
+
+        .architecture-wrapper {
+            padding: 35px;
+            overflow-x: auto;
+        }
+
+        .architecture {
+            min-width: 950px;
+        }
+
+        .layer {
+            margin-bottom: 8px;
+        }
+
+        .layer-label {
+            text-align: center;
+            margin-bottom: 9px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .architecture-row {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        .architecture-node {
+            width: 190px;
+            min-height: 92px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface-soft);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .architecture-node h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .architecture-node p {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.45;
+        }
+
+        .architecture-node.data {
+            background: #f8fafc;
+        }
+
+        .architecture-node.rag {
+            background: var(--purple-soft);
+            border-color: #ddd2ff;
+        }
+
+        .architecture-node.ai {
+            background: var(--blue-soft);
+            border-color: #c7d9ff;
+        }
+
+        .architecture-node.ml {
+            background: var(--green-soft);
+            border-color: #bcebdc;
+        }
+
+        .architecture-node.action {
+            background: var(--orange-soft);
+            border-color: #f6d89d;
+        }
+
+        .architecture-node.alert {
+            background: var(--red-soft);
+            border-color: #fecaca;
+        }
+
+        .node-icon {
+            width: 27px;
+            height: 27px;
+            margin: 0 auto 8px;
+            border-radius: 8px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .connector {
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #98a2b3;
+            font-size: 21px;
+        }
+
+        .connector span {
+            display: block;
+            line-height: 1;
+        }
+
+        .horizontal-arrow {
+            width: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #98a2b3;
+            font-size: 20px;
+        }
+
+        .branch-wrapper {
+            width: 70%;
+            margin: 0 auto;
+            height: 35px;
+            position: relative;
+        }
+
+        .branch-wrapper::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 50%;
+            height: 18px;
+            border-left: 2px solid #d0d5dd;
+            border-right: 2px solid #d0d5dd;
+            border-top: 2px solid #d0d5dd;
+            border-radius: 10px 10px 0 0;
+            transform: translateX(-50%);
+        }
+
+        .branch-wrapper::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 18px;
+            width: 2px;
+            height: 17px;
+            background: #d0d5dd;
+        }
+
+        .branch-label {
+            position: absolute;
+            left: 50%;
+            top: 7px;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 8px;
+            color: var(--muted);
+            font-size: 9px;
+            z-index: 2;
+        }
+
+        /* ---------------- FEATURE GRID ---------------- */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            padding: 22px;
+        }
+
+        .feature-number {
+            display: inline-flex;
+            width: 29px;
+            height: 29px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: var(--blue-soft);
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 13px;
+        }
+
+        .feature h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* ---------------- RAG EXPLANATION ---------------- */
+
+        .rag-flow {
+            padding: 30px;
+        }
+
+        .rag-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.3fr;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .rag-box {
+            padding: 20px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+        }
+
+        .rag-box h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .rag-box p,
+        .rag-box li {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .rag-box ul {
+            padding-left: 16px;
+        }
+
+        .rag-center {
+            text-align: center;
+            padding: 25px 15px;
+            background: var(--purple-soft);
+            border: 1px solid #ddd2ff;
+            border-radius: 15px;
+        }
+
+        .rag-center h3 {
+            color: var(--purple);
+            font-size: 16px;
+        }
+
+        .rag-center p {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* ---------------- RISK ---------------- */
+
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .risk-card {
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            background: white;
+        }
+
+        .risk-card h3 {
+            font-size: 16px;
+        }
+
+        .risk-card p {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .risk-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .low {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .medium {
+            background: var(--orange-soft);
+            color: var(--orange);
+        }
+
+        .high {
+            background: var(--red-soft);
+            color: var(--red);
+        }
+
+        /* ---------------- TECHNOLOGY ---------------- */
+
+        .technology {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .tech-card {
+            padding: 22px;
+        }
+
+        .tech-layer {
+            font-size: 10px;
+            color: var(--blue);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .tech-card h3 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .tech-card p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .tech-stack {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 9px;
+            border-radius: 7px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* ---------------- LOOP ---------------- */
+
+        .loop {
+            padding: 32px;
+            background: #172033;
+            color: white;
+            border-radius: 18px;
+        }
+
+        .loop h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .loop-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .loop-item {
+            padding: 10px 14px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: rgba(255,255,255,.06);
+            border-radius: 9px;
+            font-size: 11px;
+        }
+
+        .loop-arrow {
+            color: #94a3b8;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            border-top: 1px solid var(--border);
+            background: white;
+            padding: 35px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 900px) {
+
+            .idea-grid,
+            .rag-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .core-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .core-item:not(:last-child)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -22px;
+                transform: translateX(50%);
+            }
+
+            .feature-grid,
+            .risk-grid,
+            .technology {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .feature-grid,
+            .risk-grid,
+            .technology {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 45px 0;
+            }
+
+            header {
+                padding: 50px 0;
+            }
+
+            .architecture-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <div class="container">
+
+        <div class="header-content">
+
+            <div class="header-label">
+                INTELLIGENT RISK ANALYSIS SYSTEM
+            </div>
+
+            <h1>
+                A Context-Aware Intelligent Framework for Risk Stratification and Adaptive Intervention
+            </h1>
+
+            <p class="header-description">
+                An AI-driven framework that combines longitudinal hospital
+                records, Retrieval-Augmented Generation, machine learning,
+                explainable AI, visualization and adaptive intervention to
+                identify individuals requiring timely attention.
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     PROJECT IDEA
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Project Idea</h2>
+
+            <p>
+                The system converts raw hospital data into contextual,
+                explainable and actionable intelligence.
+            </p>
+
+        </div>
+
+
+        <div class="idea-grid">
+
+            <div class="card idea-card">
+
+                <h3>How the system works</h3>
+
+                <p>
+                    The framework collects structured patient records from
+                    the hospital database along with relevant unstructured
+                    information such as reports, clinical notes and documents.
+                    <br><br>
+
+                    A Hybrid RAG layer retrieves the information relevant to
+                    a particular patient or query. Instead of considering
+                    only the latest record, the system combines current
+                    information with historical records to construct a
+                    contextual profile.
+                    <br><br>
+
+                    An ML-based risk engine then evaluates the contextual
+                    information and generates a risk score. Explainable AI
+                    identifies the major factors contributing to that score.
+                    <br><br>
+
+                    When the system detects a significant risk or an
+                    increasing risk trend, the intervention layer generates
+                    an appropriate notification and follow-up recommendation.
+                    New information can subsequently be incorporated and
+                    the risk can be evaluated again.
+                </p>
+
+            </div>
+
+
+            <div class="card idea-card objective">
+
+                <h3>Core Objective</h3>
+
+                <p>
+                    Move from a conventional
+                    <strong>data visualization system</strong>
+                    toward a system that can
+                    <strong>retrieve, understand, predict, explain and act.</strong>
+                </p>
+
+                <span class="highlight">
+                    Understand → Predict → Explain → Intervene → Re-evaluate
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CORE CONCEPT
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Core Concept</h2>
+
+            <p>
+                The entire project can be understood as five connected
+                intelligence stages.
+            </p>
+
+        </div>
+
+
+        <div class="core-flow">
+
+            <div class="core-item">
+
+                <div class="core-number">01</div>
+
+                <h3>Understand</h3>
+
+                <p>
+                    Retrieve relevant current and historical information.
+                </p>
+
+            </div>
+
+
+            <div class="core-item">
+
+                <div class="core-number">02</div>
+
+                <h3>Predict</h3>
+
+                <p>
+                    Estimate the individual's current risk level.
+                </p>
+
+            </div>
+
+
+            <div class="core-item">
+
+                <div class="core-number">03</div>
+
+                <h3>Explain</h3>
+
+                <p>
+                    Identify the factors responsible for the prediction.
+                </p>
+
+            </div>
+
+
+            <div class="core-item">
+
+                <div class="core-number">04</div>
+
+                <h3>Intervene</h3>
+
+                <p>
+                    Trigger appropriate alerts and follow-up actions.
+                </p>
+
+            </div>
+
+
+            <div class="core-item">
+
+                <div class="core-number">05</div>
+
+                <h3>Re-evaluate</h3>
+
+                <p>
+                    Incorporate new information and reassess risk.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN ARCHITECTURE
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>System Architecture</h2>
+
+            <p>
+                The architecture separates data storage, retrieval,
+                contextual reasoning, prediction, explainability and
+                intervention into clearly defined layers.
+            </p>
+
+        </div>
+
+
+        <div class="card architecture-wrapper">
+
+            <div class="architecture">
+
+
+                <!-- DATA SOURCES -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 1 · Data Sources
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node data">
+
+                            <div class="node-icon">DB</div>
+
+                            <h3>Hospital Database</h3>
+
+                            <p>
+                                Patient records<br>
+                                Visits · Vitals · Laboratory values<br>
+                                History · Appointments
+                            </p>
+
+                        </div>
+
+
+                        <div class="architecture-node data">
+
+                            <div class="node-icon">DOC</div>
+
+                            <h3>Clinical Documents</h3>
+
+                            <p>
+                                Reports · Notes<br>
+                                Discharge summaries<br>
+                                Uploaded documents
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- PROCESSING -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 2 · Data Processing
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node">
+
+                            <div class="node-icon">01</div>
+
+                            <h3>Data Processing Engine</h3>
+
+                            <p>
+                                Cleaning · Validation<br>
+                                Missing-value handling<br>
+                                Normalization · Document processing
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- RAG -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 3 · Contextual Retrieval
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node rag">
+
+                            <div class="node-icon">SQL</div>
+
+                            <h3>Structured Retrieval</h3>
+
+                            <p>
+                                Query relevant patient records
+                                from MySQL.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            +
+                        </div>
+
+
+                        <div class="architecture-node rag">
+
+                            <div class="node-icon">V</div>
+
+                            <h3>Semantic Retrieval</h3>
+
+                            <p>
+                                Retrieve relevant documents
+                                from the vector database.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node rag">
+
+                            <div class="node-icon">R</div>
+
+                            <h3>Hybrid RAG Engine</h3>
+
+                            <p>
+                                Combines structured and semantic
+                                context and selects relevant information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- CONTEXT -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 4 · Context Construction
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node ai">
+
+                            <div class="node-icon">C</div>
+
+                            <h3>Context Builder</h3>
+
+                            <p>
+                                Current records + historical records
+                                + retrieved documents
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node ai">
+
+                            <div class="node-icon">P</div>
+
+                            <h3>Dynamic Profile</h3>
+
+                            <p>
+                                Builds a continuously updated
+                                contextual profile.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- INTELLIGENCE -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 5 · Intelligence Engine
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node ml">
+
+                            <div class="node-icon">ML</div>
+
+                            <h3>Risk Prediction</h3>
+
+                            <p>
+                                Machine learning model generates
+                                risk score and risk category.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node ml">
+
+                            <div class="node-icon">XAI</div>
+
+                            <h3>Explainable AI</h3>
+
+                            <p>
+                                SHAP identifies important
+                                contributing features.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node ai">
+
+                            <div class="node-icon">LLM</div>
+
+                            <h3>Contextual Explanation</h3>
+
+                            <p>
+                                Generates an understandable
+                                explanation using retrieved context.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- DECISION -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 6 · Decision & Intervention
+                    </div>
+
+                    <div class="branch-wrapper">
+
+                        <span class="branch-label">
+                            Decision output
+                        </span>
+
+                    </div>
+
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node action">
+
+                            <div class="node-icon">D</div>
+
+                            <h3>Risk Classification</h3>
+
+                            <p>
+                                Low · Moderate · High
+                                based on the trained model.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node alert">
+
+                            <div class="node-icon">!</div>
+
+                            <h3>Adaptive Intervention</h3>
+
+                            <p>
+                                Alerts, notifications,
+                                check-up and follow-up recommendations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 7 · Application
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node">
+
+                            <div class="node-icon">UI</div>
+
+                            <h3>Hospital Dashboard</h3>
+
+                            <p>
+                                Risk distribution · Patient trends<br>
+                                Risk factors · Alerts · Follow-up status
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            +
+                        </div>
+
+
+                        <div class="architecture-node">
+
+                            <div class="node-icon">AI</div>
+
+                            <h3>AI Query Assistant</h3>
+
+                            <p>
+                                Natural-language queries over
+                                relevant hospital records.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="connector">
+                    <span>↓</span>
+                </div>
+
+
+                <!-- FEEDBACK -->
+
+                <div class="layer">
+
+                    <div class="layer-label">
+                        Layer 8 · Feedback Loop
+                    </div>
+
+                    <div class="architecture-row">
+
+                        <div class="architecture-node action">
+
+                            <div class="node-icon">F</div>
+
+                            <h3>Follow-Up Tracking</h3>
+
+                            <p>
+                                Monitor appointment and
+                                follow-up completion.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node ai">
+
+                            <div class="node-icon">↻</div>
+
+                            <h3>Context Update</h3>
+
+                            <p>
+                                New records are incorporated
+                                into the contextual profile.
+                            </p>
+
+                        </div>
+
+
+                        <div class="horizontal-arrow">
+                            →
+                        </div>
+
+
+                        <div class="architecture-node ml">
+
+                            <div class="node-icon">R</div>
+
+                            <h3>Risk Re-evaluation</h3>
+
+                            <p>
+                                Updated context is evaluated
+                                again when new information arrives.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RAG ARCHITECTURE
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>How RAG Works in the Project</h2>
+
+            <p>
+                RAG is used to retrieve relevant information before
+                generating contextual explanations or answering queries.
+            </p>
+
+        </div>
+
+
+        <div class="card rag-flow">
+
+            <div class="rag-columns">
+
+                <div class="rag-box">
+
+                    <h3>Structured Information</h3>
+
+                    <ul>
+                        <li>Patient demographics</li>
+                        <li>Vital measurements</li>
+                        <li>Laboratory results</li>
+                        <li>Visit history</li>
+                        <li>Appointments</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="rag-box">
+
+                    <h3>Unstructured Information</h3>
+
+                    <ul>
+                        <li>Clinical reports</li>
+                        <li>Doctor notes</li>
+                        <li>Discharge summaries</li>
+                        <li>Uploaded documents</li>
+                        <li>Clinical descriptions</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="rag-center">
+
+                    <h3>Hybrid RAG</h3>
+
+                    <p>
+                        Relevant records are retrieved from both
+                        structured and semantic sources.
+                    </p>
+
+                    <br>
+
+                    <strong style="font-size:12px;">
+                        Retrieve → Rank → Build Context → Generate
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RISK STRATIFICATION
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Risk Stratification</h2>
+
+            <p>
+                The trained ML model converts relevant patient features
+                into a risk score and category.
+            </p>
+
+        </div>
+
+
+        <div class="risk-grid">
+
+            <div class="risk-card">
+
+                <span class="risk-label low">
+                    LOW RISK
+                </span>
+
+                <h3>Routine Monitoring</h3>
+
+                <p>
+                    No significant risk pattern detected.
+                    Continue normal monitoring and scheduled follow-up.
+                </p>
+
+            </div>
+
+
+            <div class="risk-card">
+
+                <span class="risk-label medium">
+                    MODERATE RISK
+                </span>
+
+                <h3>Closer Monitoring</h3>
+
+                <p>
+                    The system identifies factors that may require
+                    additional observation or professional review.
+                </p>
+
+            </div>
+
+
+            <div class="risk-card">
+
+                <span class="risk-label high">
+                    HIGH RISK
+                </span>
+
+                <h3>Priority Review</h3>
+
+                <p>
+                    A significant risk pattern is detected and the
+                    intervention workflow can generate an alert and
+                    follow-up recommendation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Implemented Features</h2>
+
+            <p>
+                The following features form the complete proposed system.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="card feature">
+                <div class="feature-number">01</div>
+                <h3>Data Integration</h3>
+                <p>
+                    Centralized integration of structured and
+                    unstructured hospital information.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">02</div>
+                <h3>Data Quality Detection</h3>
+                <p>
+                    Detect missing, duplicate, inconsistent and
+                    invalid records.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">03</div>
+                <h3>Hybrid RAG Retrieval</h3>
+                <p>
+                    Retrieve relevant structured and semantic
+                    information for contextual reasoning.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">04</div>
+                <h3>Dynamic Profile</h3>
+                <p>
+                    Maintain a contextual profile using current
+                    and historical information.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">05</div>
+                <h3>Risk Prediction</h3>
+                <p>
+                    Generate a numerical risk score using
+                    a trained machine learning model.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">06</div>
+                <h3>Explainable AI</h3>
+                <p>
+                    Use SHAP to identify the features that
+                    influenced the model prediction.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">07</div>
+                <h3>Longitudinal Analysis</h3>
+                <p>
+                    Compare records across visits and identify
+                    changing risk patterns.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">08</div>
+                <h3>Early-Warning Detection</h3>
+                <p>
+                    Detect increasing risk trends before they
+                    become severe.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">09</div>
+                <h3>Interactive Visualization</h3>
+                <p>
+                    Display risk distributions, trends,
+                    contributing factors and follow-up status.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">10</div>
+                <h3>Natural-Language Queries</h3>
+                <p>
+                    Allow authorized staff to ask questions
+                    about relevant records using natural language.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">11</div>
+                <h3>Adaptive Notifications</h3>
+                <p>
+                    Generate contextual alerts and follow-up
+                    communication based on risk state.
+                </p>
+            </div>
+
+
+            <div class="card feature">
+                <div class="feature-number">12</div>
+                <h3>Continuous Re-evaluation</h3>
+                <p>
+                    Incorporate new information and update
+                    the risk assessment over time.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TECHNOLOGY STACK
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Technology Stack</h2>
+
+            <p>
+                A single technology is selected for each major layer
+                to keep the implementation focused and maintainable.
+            </p>
+
+        </div>
+
+
+        <div class="technology">
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Frontend
+                </div>
+
+                <h3>React.js</h3>
+
+                <p>
+                    Used to build the interactive dashboard,
+                    patient views and visualization interface.
+                </p>
+
+                <span class="tech-stack">
+                    React.js
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Styling
+                </div>
+
+                <h3>Tailwind CSS</h3>
+
+                <p>
+                    Used for responsive interface design and
+                    reusable UI styling.
+                </p>
+
+                <span class="tech-stack">
+                    Tailwind CSS
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Backend
+                </div>
+
+                <h3>Spring Boot</h3>
+
+                <p>
+                    Provides REST APIs, authentication,
+                    business logic and communication with MySQL.
+                </p>
+
+                <span class="tech-stack">
+                    Spring Boot
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Database
+                </div>
+
+                <h3>MySQL</h3>
+
+                <p>
+                    Stores structured patient records,
+                    visits, risk results, alerts and follow-up data.
+                </p>
+
+                <span class="tech-stack">
+                    MySQL
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    AI / RAG Service
+                </div>
+
+                <h3>Python</h3>
+
+                <p>
+                    Handles document processing, embeddings,
+                    retrieval and machine-learning operations.
+                </p>
+
+                <span class="tech-stack">
+                    Python
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Vector Database
+                </div>
+
+                <h3>Qdrant</h3>
+
+                <p>
+                    Stores document embeddings and enables
+                    semantic retrieval for the RAG pipeline.
+                </p>
+
+                <span class="tech-stack">
+                    Qdrant
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Generative AI
+                </div>
+
+                <h3>Google Gemini</h3>
+
+                <p>
+                    Generates contextual explanations and
+                    natural-language responses from retrieved information.
+                </p>
+
+                <span class="tech-stack">
+                    Gemini API
+                </span>
+
+            </div>
+
+
+            <div class="card tech-card">
+
+                <div class="tech-layer">
+                    Explainability
+                </div>
+
+                <h3>SHAP</h3>
+
+                <p>
+                    Explains the contribution of individual
+                    features to the ML risk prediction.
+                </p>
+
+                <span class="tech-stack">
+                    SHAP
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMPLETE LOOP
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="loop">
+
+            <h2>Complete Intelligence Loop</h2>
+
+            <div class="loop-flow">
+
+                <div class="loop-item">
+                    Hospital Data
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Data Processing
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Hybrid RAG
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Context
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    ML Risk
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Explain
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Intervention
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    Follow-up
+                </div>
+
+                <div class="loop-arrow">→</div>
+
+                <div class="loop-item">
+                    New Data
+                </div>
+
+                <div class="loop-arrow">↻</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECT SUMMARY
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Project Summary</h2>
+
+        </div>
+
+
+        <div class="card idea-card">
+
+            <p>
+
+                <strong>
+                    A Context-Aware Intelligent Framework for Risk
+                    Stratification and Adaptive Intervention
+                </strong>
+                is an end-to-end intelligent decision-support framework
+                designed to transform hospital records into contextual
+                risk intelligence.
+                <br><br>
+
+                The framework integrates structured and unstructured
+                information through a Hybrid RAG architecture. Relevant
+                historical and current information is retrieved to build
+                a dynamic contextual profile. A machine learning model
+                then performs risk stratification, while SHAP provides
+                feature-level explainability.
+                <br><br>
+
+                The resulting intelligence is presented through an
+                interactive visualization layer and can trigger adaptive
+                interventions such as alerts and follow-up notifications.
+                The system then incorporates new records into the context,
+                allowing risk assessment to be continuously re-evaluated.
+                <br><br>
+
+                The overall contribution is therefore not simply
+                <strong>prediction</strong> or <strong>visualization</strong>,
+                but the integration of
+                <strong>retrieval, contextual understanding, prediction,
+                explanation and adaptive intervention</strong>
+                into a single closed-loop framework.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    A Context-Aware Intelligent Framework for Risk Stratification and Adaptive Intervention
+
+</footer>
+
+
+</body>
+</html>
