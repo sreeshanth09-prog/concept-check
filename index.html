@@ -2,36 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Context-Aware Intelligent Framework</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="description"
+        content="Research concept for an adaptive budget-aware nutrition and food resource optimization framework."
+    >
+
+    <title>
+        Contextual-Temporal Intelligence Framework
+    </title>
 
     <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
         :root {
-            --bg: #f5f7fb;
+            --bg: #f7f9fc;
             --surface: #ffffff;
-            --surface-soft: #f8fafc;
+            --surface-2: #f1f4f8;
             --text: #172033;
-            --muted: #667085;
+            --text-soft: #647084;
             --border: #e3e8ef;
 
-            --blue: #2563eb;
-            --blue-soft: #eff6ff;
+            --primary: #2563eb;
+            --primary-soft: #edf4ff;
 
-            --purple: #7c3aed;
-            --purple-soft: #f5f3ff;
+            --success: #15803d;
+            --warning: #b45309;
+            --danger: #b91c1c;
 
-            --green: #059669;
-            --green-soft: #ecfdf5;
+            --shadow-sm:
+                0 2px 8px rgba(20, 35, 60, 0.04);
 
-            --orange: #d97706;
-            --orange-soft: #fffbeb;
+            --shadow-md:
+                0 10px 30px rgba(20, 35, 60, 0.07);
 
-            --red: #dc2626;
-            --red-soft: #fef2f2;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
 
-            --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+            --max-width: 1240px;
+
+            --transition:
+                180ms ease;
         }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
 
         * {
             margin: 0;
@@ -41,972 +67,1400 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Arial, sans-serif;
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
             background: var(--bg);
             color: var(--text);
+
             line-height: 1.6;
-            overflow-x: hidden;
+
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
         }
 
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+        }
+
+
+        /* =========================================================
+           UTILITY
+        ========================================================= */
+
         .container {
-            width: min(1180px, 92%);
-            margin: auto;
+            width: min(
+                calc(100% - 40px),
+                var(--max-width)
+            );
+
+            margin-inline: auto;
         }
 
-        /* ================= HEADER ================= */
+        .section {
+            padding: 92px 0;
+        }
 
-        header {
-            background: var(--surface);
+        .section-alt {
+            background: #ffffff;
+            border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            padding: 70px 0 65px;
         }
 
-        .header-content {
-            max-width: 920px;
+        .muted {
+            color: var(--text-soft);
         }
 
-        .header-label {
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 10%,
+                    rgba(37, 99, 235, 0.08),
+                    transparent 32%
+                ),
+                var(--surface);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-inner {
+            padding: 96px 0 88px;
+        }
+
+        .eyebrow {
             display: inline-flex;
             align-items: center;
+            gap: 8px;
+
             padding: 7px 13px;
-            border-radius: 30px;
-            background: var(--blue-soft);
-            color: var(--blue);
+
+            border:
+                1px solid #d7e4ff;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+            color: var(--primary);
+
             font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .05em;
-            margin-bottom: 20px;
-        }
+            font-weight: 750;
 
-        h1 {
-            font-size: clamp(32px, 5vw, 52px);
-            line-height: 1.1;
-            letter-spacing: -1.7px;
-            max-width: 950px;
-        }
-
-        .header-description {
-            max-width: 800px;
-            margin-top: 22px;
-            color: var(--muted);
-            font-size: 16px;
-        }
-
-        /* ================= GENERAL ================= */
-
-        section {
-            padding: 65px 0;
-        }
-
-        .section-heading {
-            margin-bottom: 32px;
-        }
-
-        .section-heading h2 {
-            font-size: 30px;
-            letter-spacing: -.7px;
-        }
-
-        .section-heading p {
-            margin-top: 8px;
-            max-width: 780px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-        }
-
-        /* ================= PROJECT IDEA ================= */
-
-        .idea-grid {
-            display: grid;
-            grid-template-columns: 1.45fr .75fr;
-            gap: 20px;
-        }
-
-        .idea-card {
-            padding: 30px;
-        }
-
-        .idea-card h3 {
-            font-size: 19px;
-            margin-bottom: 13px;
-        }
-
-        .idea-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .objective {
-            background: #172033;
-            color: white;
-            border-color: #172033;
-        }
-
-        .objective p {
-            color: #cbd5e1;
-        }
-
-        .objective .highlight {
-            display: block;
-            margin-top: 25px;
-            padding: 14px;
-            border-left: 3px solid #60a5fa;
-            background: rgba(255,255,255,.06);
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* ================= CORE CONCEPT ================= */
-
-        .core-flow {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-        }
-
-        .core-item {
-            position: relative;
-            padding: 20px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            text-align: center;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .core-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .core-item:not(:last-child)::after {
-            content: "→";
-            position: absolute;
-            right: -19px;
-            top: 42%;
-            color: #98a2b3;
-            font-size: 22px;
-            z-index: 3;
-        }
-
-        .core-number {
-            width: 30px;
-            height: 30px;
-            margin: 0 auto 12px;
-            border-radius: 9px;
-            background: var(--blue-soft);
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 800;
-        }
-
-        .core-item h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .core-item p {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        /* ================= ARCHITECTURE ================= */
-
-        .architecture-wrapper {
-            padding: 35px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-        }
-
-        .architecture-wrapper::-webkit-scrollbar {
-            height: 7px;
-        }
-
-        .architecture-wrapper::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 20px;
-        }
-
-        .architecture-wrapper::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 20px;
-        }
-
-        .architecture {
-            min-width: 950px;
-        }
-
-        .layer {
-            margin-bottom: 8px;
-        }
-
-        .layer-label {
-            text-align: center;
-            margin-bottom: 9px;
-            color: var(--muted);
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: .12em;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
         }
 
-        .architecture-row {
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+        }
+
+        .hero h1 {
+            max-width: 1050px;
+
+            margin-top: 22px;
+
+            font-size:
+                clamp(32px, 5vw, 62px);
+
+            line-height: 1.06;
+
+            letter-spacing: -2.4px;
+        }
+
+        .hero-description {
+            max-width: 880px;
+
+            margin-top: 24px;
+
+            color: var(--text-soft);
+
+            font-size:
+                clamp(15px, 2vw, 18px);
+
+            line-height: 1.75;
+        }
+
+        .hero-meta {
             display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 32px;
+        }
+
+        .meta-item {
+            padding: 9px 13px;
+
+            background: #f5f7fa;
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            color: #4f5c70;
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border-bottom: 1px solid var(--border);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+
+            min-height: 64px;
+        }
+
+        .nav-brand {
+            flex: 0 0 auto;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            letter-spacing: -0.2px;
+
+            margin-right: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 4px;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            flex: 0 0 auto;
+
+            padding: 9px 12px;
+
+            border-radius: 8px;
+
+            color: var(--text-soft);
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 650;
+
+            transition:
+                color var(--transition),
+                background var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .menu-button {
+            display: none;
+
+            margin-left: auto;
+
+            width: 40px;
+            height: 40px;
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            background: var(--surface);
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           SECTION HEADINGS
+        ========================================================= */
+
+        .section-header {
+            max-width: 850px;
+
+            margin-bottom: 38px;
+        }
+
+        .section-number {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size:
+                clamp(27px, 4vw, 38px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.1px;
+        }
+
+        .section-description {
+            margin-top: 12px;
+
+            color: var(--text-soft);
+
+            font-size: 15px;
+
+            max-width: 780px;
+        }
+
+
+        /* =========================================================
+           PROBLEM STATEMENT
+        ========================================================= */
+
+        .statement {
+            padding: 34px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-left:
+                4px solid var(--primary);
+
+            border-radius: var(--radius-md);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .statement p {
+            color: #344155;
+
+            font-size:
+                clamp(17px, 2.5vw, 22px);
+
+            line-height: 1.65;
+
+            letter-spacing: -0.25px;
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .card {
+            padding: 25px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            box-shadow: var(--shadow-sm);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+
+            box-shadow: var(--shadow-md);
+
+            border-color: #d3dbe7;
+        }
+
+        .card-number {
+            display: inline-flex;
+
+            align-items: center;
             justify-content: center;
-            align-items: stretch;
+
+            width: 30px;
+            height: 30px;
+
+            margin-bottom: 17px;
+
+            border-radius: 8px;
+
+            background: var(--primary-soft);
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .card h3 {
+            font-size: 17px;
+
+            line-height: 1.3;
+
+            letter-spacing: -0.2px;
+        }
+
+        .card p {
+            margin-top: 9px;
+
+            color: var(--text-soft);
+
+            font-size: 13.5px;
+
+            line-height: 1.7;
+        }
+
+        .card ul {
+            margin-top: 12px;
+
+            padding-left: 18px;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+        .card li {
+            margin: 6px 0;
+        }
+
+
+        /* =========================================================
+           WORKFLOW
+        ========================================================= */
+
+        .workflow {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
             gap: 12px;
         }
 
-        .architecture-node {
-            width: 190px;
-            min-height: 92px;
-            padding: 16px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: var(--surface-soft);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .architecture-node:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(15, 23, 42, .08);
-        }
-
-        .architecture-node h3 {
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
-
-        .architecture-node p {
-            color: var(--muted);
-            font-size: 10px;
-            line-height: 1.45;
-        }
-
-        .architecture-node.data {
-            background: #f8fafc;
-        }
-
-        .architecture-node.rag {
-            background: var(--purple-soft);
-            border-color: #ddd2ff;
-        }
-
-        .architecture-node.ai {
-            background: var(--blue-soft);
-            border-color: #c7d9ff;
-        }
-
-        .architecture-node.ml {
-            background: var(--green-soft);
-            border-color: #bcebdc;
-        }
-
-        .architecture-node.action {
-            background: var(--orange-soft);
-            border-color: #f6d89d;
-        }
-
-        .architecture-node.alert {
-            background: var(--red-soft);
-            border-color: #fecaca;
-        }
-
-        .node-icon {
-            width: 27px;
-            height: 27px;
-            margin: 0 auto 8px;
-            border-radius: 8px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        .connector {
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #98a2b3;
-            font-size: 21px;
-        }
-
-        .connector span {
-            display: block;
-            line-height: 1;
-        }
-
-        .horizontal-arrow {
-            width: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #98a2b3;
-            font-size: 20px;
-        }
-
-        .branch-wrapper {
-            width: 70%;
-            margin: 0 auto;
-            height: 35px;
+        .workflow-step {
             position: relative;
+
+            min-height: 150px;
+
+            padding: 23px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
         }
 
-        .branch-wrapper::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 50%;
-            height: 18px;
-            border-left: 2px solid #d0d5dd;
-            border-right: 2px solid #d0d5dd;
-            border-top: 2px solid #d0d5dd;
-            border-radius: 10px 10px 0 0;
-            transform: translateX(-50%);
-        }
+        .workflow-step::after {
+            content: "→";
 
-        .branch-wrapper::after {
-            content: "";
             position: absolute;
-            left: 50%;
-            top: 18px;
-            width: 2px;
-            height: 17px;
-            background: #d0d5dd;
-        }
 
-        .branch-label {
-            position: absolute;
-            left: 50%;
-            top: 7px;
-            transform: translateX(-50%);
-            background: white;
-            padding: 0 8px;
-            color: var(--muted);
-            font-size: 9px;
+            top: 50%;
+            right: -18px;
+
+            transform: translateY(-50%);
+
+            color: #a8b3c2;
+
+            font-size: 18px;
+
             z-index: 2;
         }
 
-        /* ================= RAG ================= */
-
-        .rag-flow {
-            padding: 30px;
+        .workflow-step:nth-child(4n)::after {
+            display: none;
         }
 
-        .rag-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.3fr;
-            gap: 15px;
-            align-items: center;
-        }
+        .step-index {
+            color: var(--primary);
 
-        .rag-box {
-            padding: 20px;
-            border-radius: 13px;
-            border: 1px solid var(--border);
-            background: var(--surface-soft);
-        }
-
-        .rag-box h3 {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .rag-box p,
-        .rag-box li {
-            color: var(--muted);
             font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
         }
 
-        .rag-box ul {
-            padding-left: 16px;
-        }
+        .workflow-step h3 {
+            margin-top: 14px;
 
-        .rag-center {
-            text-align: center;
-            padding: 25px 15px;
-            background: var(--purple-soft);
-            border: 1px solid #ddd2ff;
-            border-radius: 15px;
-        }
-
-        .rag-center h3 {
-            color: var(--purple);
             font-size: 16px;
+
+            line-height: 1.3;
         }
 
-        .rag-center p {
-            color: var(--muted);
-            font-size: 11px;
-            margin-top: 5px;
-        }
-
-        /* ================= RISK ================= */
-
-        .risk-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .risk-card {
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            background: white;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .risk-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .risk-card h3 {
-            font-size: 16px;
-        }
-
-        .risk-card p {
+        .workflow-step p {
             margin-top: 7px;
-            color: var(--muted);
-            font-size: 12px;
+
+            color: var(--text-soft);
+
+            font-size: 12.5px;
         }
 
-        .risk-label {
-            display: inline-block;
-            margin-bottom: 12px;
-            padding: 5px 9px;
-            border-radius: 20px;
-            font-size: 10px;
+
+        /* =========================================================
+           ARCHITECTURE
+        ========================================================= */
+
+        .architecture {
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .architecture-layer {
+            display: grid;
+
+            grid-template-columns: 210px 1fr;
+
+            min-height: 100px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            overflow: hidden;
+        }
+
+        .layer-label {
+            display: flex;
+            align-items: center;
+
+            padding: 25px;
+
+            background: #f5f7fa;
+
+            border-right:
+                1px solid var(--border);
+        }
+
+        .layer-label strong {
+            font-size: 13px;
+
+            line-height: 1.4;
+        }
+
+        .layer-label span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .layer-items {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 10px;
+
+            padding: 18px;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 58px;
+
+            padding: 10px;
+
+            background: #fafbfd;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            color: #4e5b6f;
+
+            font-size: 12px;
+            font-weight: 650;
+
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           FEATURE TABLE
+        ========================================================= */
+
+        .table-wrapper {
+            width: 100%;
+
+            overflow-x: auto;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: var(--surface);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+
+            min-width: 850px;
+
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 17px 18px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            text-align: left;
+
+            font-size: 13px;
+        }
+
+        th {
+            background: #f5f7fa;
+
+            color: #344155;
+
+            font-size: 11px;
+
+            letter-spacing: 0.7px;
+
+            text-transform: uppercase;
+        }
+
+        td {
+            color: var(--text-soft);
+
+            vertical-align: top;
+        }
+
+        td:first-child {
+            color: var(--text);
+
             font-weight: 700;
         }
 
-        .low {
-            background: var(--green-soft);
-            color: var(--green);
+        tr:last-child td {
+            border-bottom: none;
         }
 
-        .medium {
-            background: var(--orange-soft);
-            color: var(--orange);
+
+        /* =========================================================
+           METHODOLOGY
+        ========================================================= */
+
+        .methodology {
+            counter-reset: method;
         }
 
-        .high {
-            background: var(--red-soft);
-            color: var(--red);
-        }
+        .method-card {
+            position: relative;
 
-        /* ================= FEATURES ================= */
-
-        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns: 55px 1fr;
+
             gap: 15px;
+
+            padding: 25px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            margin-bottom: 12px;
         }
 
-        .feature {
-            padding: 22px;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
+        .method-number {
+            display: flex;
 
-        .feature:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .feature-number {
-            display: inline-flex;
-            width: 29px;
-            height: 29px;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            background: var(--blue-soft);
-            color: var(--blue);
-            font-size: 11px;
-            font-weight: 800;
-            margin-bottom: 13px;
-        }
 
-        .feature h3 {
-            font-size: 15px;
-            margin-bottom: 6px;
-        }
+            width: 38px;
+            height: 38px;
 
-        .feature p {
-            color: var(--muted);
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            color: #ffffff;
+
             font-size: 12px;
+            font-weight: 800;
         }
 
-        /* ================= TECHNOLOGY ================= */
+        .method-card h3 {
+            font-size: 16px;
+        }
 
-        .technology {
+        .method-card p {
+            margin-top: 6px;
+
+            color: var(--text-soft);
+
+            font-size: 13.5px;
+        }
+
+
+        /* =========================================================
+           FORMULA
+        ========================================================= */
+
+        .formula {
+            margin-top: 25px;
+
+            padding: 30px;
+
+            background: #111827;
+
+            border-radius: var(--radius-md);
+
+            overflow-x: auto;
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .formula-title {
+            margin-bottom: 18px;
+
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .formula code {
+            display: block;
+
+            color: #d9e3f0;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            white-space: pre;
+        }
+
+
+        /* =========================================================
+           TECHNOLOGY
+        ========================================================= */
+
+        .tech-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
             gap: 15px;
         }
 
         .tech-card {
             padding: 22px;
-            transition: transform .25s ease, box-shadow .25s ease;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
         }
 
-        .tech-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
+        .tech-icon {
+            width: 38px;
+            height: 38px;
 
-        .tech-layer {
-            font-size: 10px;
-            color: var(--blue);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-        }
-
-        .tech-card h3 {
-            font-size: 16px;
-            margin: 5px 0;
-        }
-
-        .tech-card p {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .tech-stack {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 6px 9px;
-            border-radius: 7px;
-            background: var(--surface-soft);
-            border: 1px solid var(--border);
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        /* ================= LOOP ================= */
-
-        .loop {
-            padding: 32px;
-            background: #172033;
-            color: white;
-            border-radius: 18px;
-        }
-
-        .loop h2 {
-            font-size: 24px;
-            margin-bottom: 25px;
-        }
-
-        .loop-flow {
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
 
-        .loop-item {
-            padding: 10px 14px;
-            border: 1px solid rgba(255,255,255,.14);
-            background: rgba(255,255,255,.06);
+            margin-bottom: 15px;
+
             border-radius: 9px;
+
+            background: var(--primary-soft);
+
+            color: var(--primary);
+
             font-size: 11px;
-            white-space: nowrap;
+            font-weight: 800;
         }
 
-        .loop-arrow {
-            color: #94a3b8;
+        .tech-card h3 {
+            font-size: 15px;
         }
 
-        /* ================= FOOTER ================= */
+        .tech-card p {
+            margin-top: 6px;
 
-        footer {
-            border-top: 1px solid var(--border);
-            background: white;
-            padding: 35px 0;
+            color: var(--text-soft);
+
+            font-size: 12.5px;
+        }
+
+
+        /* =========================================================
+           METRICS
+        ========================================================= */
+
+        .metrics {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 15px;
+        }
+
+        .metric {
+            padding: 25px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
             text-align: center;
-            color: var(--muted);
+        }
+
+        .metric-value {
+            font-size: 25px;
+
+            font-weight: 800;
+
+            color: var(--primary);
+
+            letter-spacing: -0.7px;
+        }
+
+        .metric-name {
+            margin-top: 6px;
+
+            color: var(--text-soft);
+
             font-size: 12px;
         }
 
-        /* =====================================================
+
+        /* =========================================================
+           PHASES
+        ========================================================= */
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 19px;
+            top: 10px;
+            bottom: 10px;
+
+            width: 1px;
+
+            background: #d8e0ea;
+        }
+
+        .phase {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: 40px 1fr;
+
+            gap: 20px;
+
+            margin-bottom: 24px;
+        }
+
+        .phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-dot {
+            position: relative;
+            z-index: 2;
+
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid #d4e2fb;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .phase-content {
+            padding: 22px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+        }
+
+        .phase-content h3 {
+            font-size: 16px;
+        }
+
+        .phase-content p {
+            margin-top: 6px;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           RESEARCH CONTRIBUTION
+        ========================================================= */
+
+        .contribution {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .contribution-card {
+            padding: 30px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+        }
+
+        .contribution-card.primary {
+            background: #f1f6ff;
+
+            border-color: #d6e4ff;
+        }
+
+        .contribution-card h3 {
+            font-size: 18px;
+        }
+
+        .contribution-card p {
+            margin-top: 10px;
+
+            color: var(--text-soft);
+
+            font-size: 13.5px;
+        }
+
+
+        /* =========================================================
+           FINAL OUTPUT
+        ========================================================= */
+
+        .output-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 15px;
+        }
+
+        .output-item {
+            padding: 24px;
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+        }
+
+        .output-item h3 {
+            font-size: 15px;
+        }
+
+        .output-item p {
+            margin-top: 7px;
+
+            color: var(--text-soft);
+
+            font-size: 12.5px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 60px 0;
+
+            background: #111827;
+
+            color: #ffffff;
+        }
+
+        footer h2 {
+            font-size: 20px;
+
+            letter-spacing: -0.3px;
+        }
+
+        footer p {
+            max-width: 760px;
+
+            margin-top: 10px;
+
+            color: #aeb9c9;
+
+            font-size: 13px;
+        }
+
+        .footer-line {
+            height: 1px;
+
+            margin: 30px 0;
+
+            background: #283447;
+        }
+
+        .footer-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #8995a7;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(15px);
+
+            transition:
+                opacity 500ms ease,
+                transform 500ms ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        .top-button {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.95);
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            box-shadow: var(--shadow-md);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(8px);
+
+            transition:
+                opacity var(--transition),
+                visibility var(--transition),
+                transform var(--transition);
+        }
+
+        .top-button.show {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
            TABLET
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1050px) {
 
-            header {
-                padding: 60px 0 55px;
+            .grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
-            .idea-grid,
-            .rag-columns {
-                grid-template-columns: 1fr;
+            .workflow {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
-            .core-flow {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .workflow-step::after {
+                display: none;
             }
 
-            .core-item {
-                padding: 22px;
+            .layer-items {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
-            .core-item:not(:last-child)::after {
-                content: "↓";
-                right: 50%;
-                top: auto;
-                bottom: -22px;
-                transform: translateX(50%);
+            .tech-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
-            .feature-grid,
-            .risk-grid,
-            .technology {
-                grid-template-columns: repeat(2, 1fr);
+            .metrics {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
-            .rag-center {
-                max-width: 500px;
-                width: 100%;
-                margin: auto;
+            .output-list {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
         }
 
-        /* =====================================================
+
+        /* =========================================================
            MOBILE
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 600px) {
-
-            body {
-                font-size: 14px;
-            }
+        @media (max-width: 720px) {
 
             .container {
-                width: calc(100% - 28px);
+                width: min(
+                    calc(100% - 28px),
+                    var(--max-width)
+                );
             }
 
-            header {
-                padding: 42px 0 40px;
+            .section {
+                padding: 64px 0;
             }
 
-            .header-label {
-                font-size: 10px;
-                padding: 6px 10px;
-                margin-bottom: 16px;
+            .hero-inner {
+                padding: 65px 0 60px;
             }
 
-            h1 {
-                font-size: 31px;
-                line-height: 1.12;
-                letter-spacing: -1px;
+            .hero h1 {
+                letter-spacing: -1.5px;
             }
 
-            .header-description {
-                margin-top: 17px;
-                font-size: 13px;
-                line-height: 1.7;
-            }
-
-            section {
-                padding: 42px 0;
-            }
-
-            .section-heading {
-                margin-bottom: 22px;
-            }
-
-            .section-heading h2 {
-                font-size: 24px;
-                letter-spacing: -.4px;
-            }
-
-            .section-heading p {
-                font-size: 12px;
+            .hero-description {
                 line-height: 1.65;
             }
 
-            /* PROJECT IDEA */
-
-            .idea-grid {
-                gap: 14px;
+            .nav-inner {
+                min-height: 58px;
             }
 
-            .idea-card {
-                padding: 21px;
-                border-radius: 15px;
-            }
+            .nav-brand {
+                margin-right: 12px;
 
-            .idea-card h3 {
-                font-size: 17px;
-                margin-bottom: 10px;
-            }
-
-            .idea-card p {
                 font-size: 12px;
-                line-height: 1.75;
             }
 
-            .objective .highlight {
-                margin-top: 18px;
-                padding: 11px;
-                font-size: 12px;
-                line-height: 1.6;
+            .nav-links {
+                gap: 2px;
             }
 
-            /* CORE */
+            .nav-link {
+                padding: 8px 9px;
 
-            .core-flow {
-                gap: 19px;
-            }
-
-            .core-item {
-                padding: 18px 16px;
-                border-radius: 13px;
-            }
-
-            .core-item h3 {
-                font-size: 14px;
-            }
-
-            .core-item p {
                 font-size: 11px;
             }
 
-            /* ARCHITECTURE */
-
-            .architecture-wrapper {
-                padding: 18px 10px 16px;
-                border-radius: 15px;
+            .grid {
+                grid-template-columns: 1fr;
             }
 
-            .architecture {
-                min-width: 760px;
+            .workflow {
+                grid-template-columns: 1fr;
             }
 
-            .architecture-node {
-                width: 150px;
-                min-height: 86px;
-                padding: 12px;
+            .workflow-step {
+                min-height: auto;
             }
 
-            .architecture-node h3 {
-                font-size: 11px;
-            }
-
-            .architecture-node p {
-                font-size: 9px;
-            }
-
-            .node-icon {
-                width: 24px;
-                height: 24px;
-                font-size: 9px;
-                margin-bottom: 6px;
-            }
-
-            .architecture-row {
-                gap: 8px;
-            }
-
-            .horizontal-arrow {
-                width: 20px;
-                font-size: 17px;
-            }
-
-            .connector {
-                height: 27px;
-                font-size: 18px;
+            .architecture-layer {
+                grid-template-columns: 1fr;
             }
 
             .layer-label {
-                font-size: 8px;
-                letter-spacing: .1em;
+                border-right: none;
+
+                border-bottom:
+                    1px solid var(--border);
             }
 
-            /*
-             * Important:
-             * The architecture intentionally remains horizontally
-             * scrollable on very small screens instead of shrinking
-             * the diagram until the text becomes unreadable.
-             */
-
-            /* RAG */
-
-            .rag-flow {
-                padding: 18px;
-                border-radius: 15px;
+            .layer-items {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .rag-box {
-                padding: 17px;
+            .tech-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .rag-box h3 {
-                font-size: 13px;
+            .metrics {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .rag-box p,
-            .rag-box li {
-                font-size: 10px;
-            }
-
-            .rag-center {
-                padding: 20px 14px;
-            }
-
-            .rag-center h3 {
-                font-size: 15px;
-            }
-
-            /* RISK */
-
-            .feature-grid,
-            .risk-grid,
-            .technology {
+            .contribution {
                 grid-template-columns: 1fr;
+            }
+
+            .output-list {
+                grid-template-columns: 1fr;
+            }
+
+            .statement {
+                padding: 24px;
+            }
+
+            .method-card {
+                grid-template-columns: 42px 1fr;
+
+                padding: 20px;
+
                 gap: 12px;
             }
 
-            .risk-card {
-                padding: 20px;
+            .formula {
+                padding: 22px;
+
+                border-radius: 12px;
             }
 
-            .risk-card h3 {
-                font-size: 15px;
+            .footer-bottom {
+                flex-direction: column;
             }
 
-            .risk-card p {
-                font-size: 11px;
-                line-height: 1.65;
-            }
-
-            /* FEATURES */
-
-            .feature {
-                padding: 19px;
-                border-radius: 14px;
-            }
-
-            .feature h3 {
-                font-size: 14px;
-            }
-
-            .feature p {
-                font-size: 11px;
-                line-height: 1.65;
-            }
-
-            /* TECHNOLOGY */
-
-            .tech-card {
-                padding: 19px;
-                border-radius: 14px;
-            }
-
-            .tech-card h3 {
-                font-size: 15px;
-            }
-
-            .tech-card p {
-                font-size: 11px;
-                line-height: 1.65;
-            }
-
-            /* LOOP */
-
-            .loop {
-                padding: 23px 18px;
-                border-radius: 15px;
-            }
-
-            .loop h2 {
-                font-size: 20px;
-                margin-bottom: 20px;
-            }
-
-            .loop-flow {
-                justify-content: flex-start;
-                gap: 7px;
-            }
-
-            .loop-item {
-                padding: 8px 10px;
-                font-size: 9px;
-            }
-
-            .loop-arrow {
-                font-size: 11px;
-            }
-
-            /* FOOTER */
-
-            footer {
-                padding: 28px 15px;
-                font-size: 10px;
-                line-height: 1.6;
+            .top-button {
+                right: 14px;
+                bottom: 14px;
             }
         }
 
-        /* =====================================================
-           VERY SMALL DEVICES
-        ===================================================== */
 
-        @media (max-width: 380px) {
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
 
-            h1 {
-                font-size: 28px;
+        @media (max-width: 430px) {
+
+            .hero-inner {
+                padding-top: 50px;
             }
 
-            .header-description {
-                font-size: 12px;
+            .hero-meta {
+                display: grid;
+
+                grid-template-columns: 1fr 1fr;
             }
 
-            .section-heading h2 {
-                font-size: 22px;
+            .meta-item {
+                font-size: 10.5px;
+
+                text-align: center;
             }
 
-            .architecture {
-                min-width: 720px;
+            .layer-items {
+                grid-template-columns: 1fr;
             }
 
-            .architecture-node {
-                width: 140px;
+            .tech-grid {
+                grid-template-columns: 1fr;
             }
 
-            .loop-item {
-                font-size: 8px;
-                padding: 7px 8px;
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                letter-spacing: -0.7px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCE MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
             }
         }
 
@@ -1018,29 +1472,55 @@
 
 
 <!-- =========================================================
-     HEADER
+     HERO
 ========================================================= -->
 
-<header>
+<header class="hero" id="top">
 
-    <div class="container">
+    <div class="container hero-inner">
 
-        <div class="header-content">
+        <span class="eyebrow">
+            IEEE Conference Research Concept
+        </span>
 
-            <div class="header-label">
-                INTELLIGENT RISK ANALYSIS SYSTEM
-            </div>
+        <h1>
+            A Contextual-Temporal Intelligence Framework
+            for Adaptive Resource Orchestration and
+            Personalized Decision Synthesis
+        </h1>
 
-            <h1>
-                A Context-Aware Intelligent Framework for Risk Stratification and Adaptive Intervention
-            </h1>
+        <p class="hero-description">
+            A research-oriented intelligent framework that treats
+            personalized food planning as a dynamic resource-allocation
+            problem under economic, nutritional, behavioral, temporal
+            and operational constraints.
+        </p>
 
-            <p class="header-description">
-                An AI-driven framework that combines longitudinal hospital
-                records, Retrieval-Augmented Generation, machine learning,
-                explainable AI, visualization and adaptive intervention to
-                identify individuals requiring timely attention.
-            </p>
+        <div class="hero-meta">
+
+            <span class="meta-item">
+                Budget-Aware
+            </span>
+
+            <span class="meta-item">
+                Nutrition-Aware
+            </span>
+
+            <span class="meta-item">
+                Price-Adaptive
+            </span>
+
+            <span class="meta-item">
+                Waste-Aware
+            </span>
+
+            <span class="meta-item">
+                Constraint-Aware
+            </span>
+
+            <span class="meta-item">
+                AI-Assisted
+            </span>
 
         </div>
 
@@ -1049,79 +1529,255 @@
 </header>
 
 
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="nav">
+
+    <div class="container nav-inner">
+
+        <div class="nav-brand">
+            PROJECT CONCEPT
+        </div>
+
+        <div class="nav-links">
+
+            <a class="nav-link" href="#overview">
+                Overview
+            </a>
+
+            <a class="nav-link" href="#problem">
+                Problem
+            </a>
+
+            <a class="nav-link" href="#objectives">
+                Objectives
+            </a>
+
+            <a class="nav-link" href="#workflow">
+                Workflow
+            </a>
+
+            <a class="nav-link" href="#architecture">
+                Architecture
+            </a>
+
+            <a class="nav-link" href="#features">
+                Features
+            </a>
+
+            <a class="nav-link" href="#methodology">
+                Method
+            </a>
+
+            <a class="nav-link" href="#technology">
+                Technology
+            </a>
+
+            <a class="nav-link" href="#evaluation">
+                Evaluation
+            </a>
+
+            <a class="nav-link" href="#implementation">
+                Roadmap
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
 <main>
 
 
 <!-- =========================================================
-     PROJECT IDEA
+     01 OVERVIEW
 ========================================================= -->
 
-<section>
+<section class="section" id="overview">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Project Idea</h2>
+            <span class="section-number">
+                01 — Project Overview
+            </span>
 
-            <p>
-                The system converts raw hospital data into contextual,
-                explainable and actionable intelligence.
+            <h2 class="section-title">
+                Concept
+            </h2>
+
+            <p class="section-description">
+                The system combines nutritional intelligence,
+                economic optimization and adaptive planning to
+                create practical food plans for users with limited
+                and fixed budgets.
             </p>
 
         </div>
 
 
-        <div class="idea-grid">
+        <div class="statement reveal">
 
-            <div class="card idea-card">
+            <p>
+                The central idea is to determine what a person can
+                realistically purchase, prepare and consume within a
+                fixed budget while attempting to satisfy nutritional
+                requirements. The system continuously adapts the
+                recommendation when food prices, available inventory,
+                leftovers, cooking constraints or user behavior change.
+            </p>
 
-                <h3>How the system works</h3>
+        </div>
 
-                <p>
-                    The framework collects structured patient records from
-                    the hospital database along with relevant unstructured
-                    information such as reports, clinical notes and documents.
-                    <br><br>
+    </div>
 
-                    A Hybrid RAG layer retrieves the information relevant to
-                    a particular patient or query. Instead of considering
-                    only the latest record, the system combines current
-                    information with historical records to construct a
-                    contextual profile.
-                    <br><br>
-
-                    An ML-based risk engine then evaluates the contextual
-                    information and generates a risk score. Explainable AI
-                    identifies the major factors contributing to that score.
-                    <br><br>
-
-                    When the system detects a significant risk or an
-                    increasing risk trend, the intervention layer generates
-                    an appropriate notification and follow-up recommendation.
-                    New information can subsequently be incorporated and
-                    the risk can be evaluated again.
-                </p>
-
-            </div>
+</section>
 
 
-            <div class="card idea-card objective">
+<!-- =========================================================
+     02 PROBLEM
+========================================================= -->
 
-                <h3>Core Objective</h3>
+<section class="section section-alt" id="problem">
 
-                <p>
-                    Move from a conventional
-                    <strong>data visualization system</strong>
-                    toward a system that can
-                    <strong>retrieve, understand, predict, explain and act.</strong>
-                </p>
+    <div class="container">
 
-                <span class="highlight">
-                    Understand → Predict → Explain → Intervene → Re-evaluate
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                02 — Problem Definition
+            </span>
+
+            <h2 class="section-title">
+                What Problem Does It Solve?
+            </h2>
+
+            <p class="section-description">
+                Existing food-planning approaches often treat nutrition,
+                cost and food availability separately. This project
+                attempts to solve them together.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    01
                 </span>
 
-            </div>
+                <h3>
+                    Limited Food Budget
+                </h3>
+
+                <p>
+                    Users may have a fixed weekly or monthly amount
+                    available for food and still need an appropriate
+                    nutritional plan.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    02
+                </span>
+
+                <h3>
+                    Changing Grocery Prices
+                </h3>
+
+                <p>
+                    Food prices change over time, which can make a
+                    previously generated plan exceed the available
+                    budget.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    03
+                </span>
+
+                <h3>
+                    Conflicting Requirements
+                </h3>
+
+                <p>
+                    Budget, nutrition, dietary restrictions, cooking
+                    time and food preferences can conflict with one
+                    another.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    04
+                </span>
+
+                <h3>
+                    Food Waste
+                </h3>
+
+                <p>
+                    Ingredients may remain unused, expire or be purchased
+                    in quantities that do not match actual consumption.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    05
+                </span>
+
+                <h3>
+                    Inefficient Spending
+                </h3>
+
+                <p>
+                    The cheapest food is not always the most useful food
+                    when nutritional value and total meal requirements
+                    are considered.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    06
+                </span>
+
+                <h3>
+                    Static Meal Planning
+                </h3>
+
+                <p>
+                    A fixed plan does not normally react to price changes,
+                    inventory changes, missed meals or actual user behavior.
+                </p>
+
+            </article>
 
         </div>
 
@@ -1131,90 +1787,134 @@
 
 
 <!-- =========================================================
-     CORE CONCEPT
+     03 OBJECTIVES
 ========================================================= -->
 
-<section>
+<section class="section" id="objectives">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Core Concept</h2>
+            <span class="section-number">
+                03 — Objectives
+            </span>
 
-            <p>
-                The entire project can be understood as five connected
-                intelligence stages.
-            </p>
+            <h2 class="section-title">
+                Research Objectives
+            </h2>
 
         </div>
 
 
-        <div class="core-flow">
+        <div class="grid">
 
-            <div class="core-item">
+            <article class="card reveal">
 
-                <div class="core-number">01</div>
+                <span class="card-number">
+                    01
+                </span>
 
-                <h3>Understand</h3>
-
-                <p>
-                    Retrieve relevant current and historical information.
-                </p>
-
-            </div>
-
-
-            <div class="core-item">
-
-                <div class="core-number">02</div>
-
-                <h3>Predict</h3>
+                <h3>
+                    Economic Feasibility
+                </h3>
 
                 <p>
-                    Estimate the individual's current risk level.
+                    Determine whether a requested nutritional goal is
+                    achievable within the user's fixed budget.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="core-item">
+            <article class="card reveal">
 
-                <div class="core-number">03</div>
+                <span class="card-number">
+                    02
+                </span>
 
-                <h3>Explain</h3>
+                <h3>
+                    Multi-Objective Optimization
+                </h3>
 
                 <p>
-                    Identify the factors responsible for the prediction.
+                    Balance cost, nutrition, food reuse, waste,
+                    preferences and cooking feasibility.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="core-item">
+            <article class="card reveal">
 
-                <div class="core-number">04</div>
+                <span class="card-number">
+                    03
+                </span>
 
-                <h3>Intervene</h3>
+                <h3>
+                    Dynamic Adaptation
+                </h3>
 
                 <p>
-                    Trigger appropriate alerts and follow-up actions.
+                    Recalculate the plan when important economic or
+                    personal conditions change.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="core-item">
+            <article class="card reveal">
 
-                <div class="core-number">05</div>
+                <span class="card-number">
+                    04
+                </span>
 
-                <h3>Re-evaluate</h3>
+                <h3>
+                    Resource Efficiency
+                </h3>
 
                 <p>
-                    Incorporate new information and reassess risk.
+                    Improve the utilization of purchased ingredients
+                    and reduce unnecessary waste.
                 </p>
 
-            </div>
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    05
+                </span>
+
+                <h3>
+                    Practical Meal Generation
+                </h3>
+
+                <p>
+                    Convert optimized groceries into meals that are
+                    compatible with the user's kitchen and time.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    06
+                </span>
+
+                <h3>
+                    Continuous Personalization
+                </h3>
+
+                <p>
+                    Improve future plans using inventory, consumption,
+                    preferences and previous planning outcomes.
+                </p>
+
+            </article>
 
         </div>
 
@@ -1224,482 +1924,531 @@
 
 
 <!-- =========================================================
-     MAIN ARCHITECTURE
+     04 WORKFLOW
 ========================================================= -->
 
-<section>
+<section class="section section-alt" id="workflow">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>System Architecture</h2>
+            <span class="section-number">
+                04 — System Workflow
+            </span>
 
-            <p>
-                The architecture separates data storage, retrieval,
-                contextual reasoning, prediction, explainability and
-                intervention into clearly defined layers.
+            <h2 class="section-title">
+                End-to-End Workflow
+            </h2>
+
+            <p class="section-description">
+                The system follows a closed-loop process rather than
+                generating a one-time diet plan.
             </p>
 
         </div>
 
 
-        <div class="card architecture-wrapper">
+        <div class="workflow">
 
-            <div class="architecture">
+            <article class="workflow-step reveal">
 
+                <span class="step-index">
+                    STEP 01
+                </span>
 
-                <!-- DATA SOURCES -->
+                <h3>
+                    User Context
+                </h3>
 
-                <div class="layer">
+                <p>
+                    Goal, budget, diet, activity, preferences,
+                    kitchen, cooking time and household size.
+                </p>
 
-                    <div class="layer-label">
-                        Layer 1 · Data Sources
-                    </div>
+            </article>
 
-                    <div class="architecture-row">
 
-                        <div class="architecture-node data">
+            <article class="workflow-step reveal">
 
-                            <div class="node-icon">DB</div>
+                <span class="step-index">
+                    STEP 02
+                </span>
 
-                            <h3>Hospital Database</h3>
+                <h3>
+                    Nutrition Analysis
+                </h3>
 
-                            <p>
-                                Patient records<br>
-                                Visits · Vitals · Laboratory values<br>
-                                History · Appointments
-                            </p>
+                <p>
+                    Estimate nutritional requirements and target ranges.
+                </p>
 
-                        </div>
+            </article>
 
 
-                        <div class="architecture-node data">
+            <article class="workflow-step reveal">
 
-                            <div class="node-icon">DOC</div>
+                <span class="step-index">
+                    STEP 03
+                </span>
 
-                            <h3>Clinical Documents</h3>
+                <h3>
+                    Economic Analysis
+                </h3>
 
-                            <p>
-                                Reports · Notes<br>
-                                Discharge summaries<br>
-                                Uploaded documents
-                            </p>
+                <p>
+                    Determine whether the nutritional objective is
+                    financially feasible.
+                </p>
 
-                        </div>
+            </article>
 
-                    </div>
 
-                </div>
+            <article class="workflow-step reveal">
 
+                <span class="step-index">
+                    STEP 04
+                </span>
 
-                <div class="connector">
-                    <span>↓</span>
-                </div>
+                <h3>
+                    Price Integration
+                </h3>
 
+                <p>
+                    Incorporate current and historical grocery prices.
+                </p>
 
-                <!-- PROCESSING -->
+            </article>
 
-                <div class="layer">
 
-                    <div class="layer-label">
-                        Layer 2 · Data Processing
-                    </div>
+            <article class="workflow-step reveal">
 
-                    <div class="architecture-row">
+                <span class="step-index">
+                    STEP 05
+                </span>
 
-                        <div class="architecture-node">
+                <h3>
+                    Optimization
+                </h3>
 
-                            <div class="node-icon">01</div>
+                <p>
+                    Find the best food quantities under multiple constraints.
+                </p>
 
-                            <h3>Data Processing Engine</h3>
+            </article>
 
-                            <p>
-                                Cleaning · Validation<br>
-                                Missing-value handling<br>
-                                Normalization · Document processing
-                            </p>
 
-                        </div>
+            <article class="workflow-step reveal">
 
-                    </div>
+                <span class="step-index">
+                    STEP 06
+                </span>
 
-                </div>
+                <h3>
+                    Grocery Basket
+                </h3>
 
+                <p>
+                    Convert optimized quantities into a practical shopping list.
+                </p>
 
-                <div class="connector">
-                    <span>↓</span>
-                </div>
+            </article>
 
 
-                <!-- RAG -->
+            <article class="workflow-step reveal">
 
-                <div class="layer">
+                <span class="step-index">
+                    STEP 07
+                </span>
 
-                    <div class="layer-label">
-                        Layer 3 · Contextual Retrieval
-                    </div>
+                <h3>
+                    Meal Allocation
+                </h3>
 
-                    <div class="architecture-row">
+                <p>
+                    Distribute ingredients across meals and days.
+                </p>
 
-                        <div class="architecture-node rag">
+            </article>
 
-                            <div class="node-icon">SQL</div>
 
-                            <h3>Structured Retrieval</h3>
+            <article class="workflow-step reveal">
 
-                            <p>
-                                Query relevant patient records
-                                from MySQL.
-                            </p>
+                <span class="step-index">
+                    STEP 08
+                </span>
 
-                        </div>
+                <h3>
+                    Recipe Generation
+                </h3>
 
+                <p>
+                    Generate cooking instructions from the selected ingredients.
+                </p>
 
-                        <div class="horizontal-arrow">
-                            +
-                        </div>
+            </article>
 
 
-                        <div class="architecture-node rag">
+            <article class="workflow-step reveal">
 
-                            <div class="node-icon">V</div>
+                <span class="step-index">
+                    STEP 09
+                </span>
 
-                            <h3>Semantic Retrieval</h3>
+                <h3>
+                    Consumption
+                </h3>
 
-                            <p>
-                                Retrieve relevant documents
-                                from the vector database.
-                            </p>
+                <p>
+                    User records meals, purchases and remaining ingredients.
+                </p>
 
-                        </div>
+            </article>
 
 
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
+            <article class="workflow-step reveal">
 
+                <span class="step-index">
+                    STEP 10
+                </span>
 
-                        <div class="architecture-node rag">
+                <h3>
+                    Inventory
+                </h3>
 
-                            <div class="node-icon">R</div>
+                <p>
+                    Track available food, leftovers and estimated expiry.
+                </p>
 
-                            <h3>Hybrid RAG Engine</h3>
+            </article>
 
-                            <p>
-                                Combines structured and semantic
-                                context and selects relevant information.
-                            </p>
 
-                        </div>
+            <article class="workflow-step reveal">
 
-                    </div>
+                <span class="step-index">
+                    STEP 11
+                </span>
 
-                </div>
+                <h3>
+                    Change Detection
+                </h3>
 
+                <p>
+                    Detect meaningful price, inventory or behavioral changes.
+                </p>
 
-                <div class="connector">
-                    <span>↓</span>
-                </div>
+            </article>
 
 
-                <!-- CONTEXT -->
+            <article class="workflow-step reveal">
 
-                <div class="layer">
+                <span class="step-index">
+                    STEP 12
+                </span>
 
-                    <div class="layer-label">
-                        Layer 4 · Context Construction
-                    </div>
+                <h3>
+                    Re-Optimization
+                </h3>
 
-                    <div class="architecture-row">
+                <p>
+                    Adapt the plan while preserving the most important goals.
+                </p>
 
-                        <div class="architecture-node ai">
+            </article>
 
-                            <div class="node-icon">C</div>
+        </div>
 
-                            <h3>Context Builder</h3>
+    </div>
 
-                            <p>
-                                Current records + historical records
-                                + retrieved documents
-                            </p>
+</section>
 
-                        </div>
 
+<!-- =========================================================
+     05 ARCHITECTURE
+========================================================= -->
 
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
+<section class="section" id="architecture">
 
+    <div class="container">
 
-                        <div class="architecture-node ai">
+        <div class="section-header reveal">
 
-                            <div class="node-icon">P</div>
+            <span class="section-number">
+                05 — Architecture
+            </span>
 
-                            <h3>Dynamic Profile</h3>
+            <h2 class="section-title">
+                System Architecture
+            </h2>
 
-                            <p>
-                                Builds a continuously updated
-                                contextual profile.
-                            </p>
+            <p class="section-description">
+                The architecture separates deterministic optimization
+                from generative AI so that cost and nutritional constraints
+                remain mathematically controlled.
+            </p>
 
-                        </div>
+        </div>
 
-                    </div>
 
-                </div>
+        <div class="architecture">
 
+            <div class="architecture-layer reveal">
 
-                <div class="connector">
-                    <span>↓</span>
-                </div>
+                <div class="layer-label">
 
+                    <div>
+                        <strong>
+                            User Context Layer
+                        </strong>
 
-                <!-- INTELLIGENCE -->
-
-                <div class="layer">
-
-                    <div class="layer-label">
-                        Layer 5 · Intelligence Engine
-                    </div>
-
-                    <div class="architecture-row">
-
-                        <div class="architecture-node ml">
-
-                            <div class="node-icon">ML</div>
-
-                            <h3>Risk Prediction</h3>
-
-                            <p>
-                                Machine learning model generates
-                                risk score and risk category.
-                            </p>
-
-                        </div>
-
-
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
-
-
-                        <div class="architecture-node ml">
-
-                            <div class="node-icon">XAI</div>
-
-                            <h3>Explainable AI</h3>
-
-                            <p>
-                                SHAP identifies important
-                                contributing features.
-                            </p>
-
-                        </div>
-
-
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
-
-
-                        <div class="architecture-node ai">
-
-                            <div class="node-icon">LLM</div>
-
-                            <h3>Contextual Explanation</h3>
-
-                            <p>
-                                Generates an understandable
-                                explanation using retrieved context.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="connector">
-                    <span>↓</span>
-                </div>
-
-
-                <!-- DECISION -->
-
-                <div class="layer">
-
-                    <div class="layer-label">
-                        Layer 6 · Decision & Intervention
-                    </div>
-
-                    <div class="branch-wrapper">
-
-                        <span class="branch-label">
-                            Decision output
+                        <span>
+                            Input & preferences
                         </span>
-
-                    </div>
-
-
-                    <div class="architecture-row">
-
-                        <div class="architecture-node action">
-
-                            <div class="node-icon">D</div>
-
-                            <h3>Risk Classification</h3>
-
-                            <p>
-                                Low · Moderate · High
-                                based on the trained model.
-                            </p>
-
-                        </div>
-
-
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
-
-
-                        <div class="architecture-node alert">
-
-                            <div class="node-icon">!</div>
-
-                            <h3>Adaptive Intervention</h3>
-
-                            <p>
-                                Alerts, notifications,
-                                check-up and follow-up recommendations.
-                            </p>
-
-                        </div>
-
                     </div>
 
                 </div>
 
 
-                <div class="connector">
-                    <span>↓</span>
-                </div>
+                <div class="layer-items">
 
-
-                <!-- OUTPUT -->
-
-                <div class="layer">
-
-                    <div class="layer-label">
-                        Layer 7 · Application
+                    <div class="layer-item">
+                        Goal
                     </div>
 
-                    <div class="architecture-row">
+                    <div class="layer-item">
+                        Budget
+                    </div>
 
-                        <div class="architecture-node">
+                    <div class="layer-item">
+                        Diet
+                    </div>
 
-                            <div class="node-icon">UI</div>
+                    <div class="layer-item">
+                        Activity
+                    </div>
 
-                            <h3>Hospital Dashboard</h3>
+                    <div class="layer-item">
+                        Preferences
+                    </div>
 
-                            <p>
-                                Risk distribution · Patient trends<br>
-                                Risk factors · Alerts · Follow-up status
-                            </p>
+                    <div class="layer-item">
+                        Kitchen
+                    </div>
 
-                        </div>
+                    <div class="layer-item">
+                        Cooking Time
+                    </div>
 
-
-                        <div class="horizontal-arrow">
-                            +
-                        </div>
-
-
-                        <div class="architecture-node">
-
-                            <div class="node-icon">AI</div>
-
-                            <h3>AI Query Assistant</h3>
-
-                            <p>
-                                Natural-language queries over
-                                relevant hospital records.
-                            </p>
-
-                        </div>
-
+                    <div class="layer-item">
+                        Household
                     </div>
 
                 </div>
 
+            </div>
 
-                <div class="connector">
-                    <span>↓</span>
+
+            <div class="architecture-layer reveal">
+
+                <div class="layer-label">
+
+                    <div>
+                        <strong>
+                            Data Layer
+                        </strong>
+
+                        <span>
+                            Structured knowledge
+                        </span>
+                    </div>
+
                 </div>
 
 
-                <!-- FEEDBACK -->
+                <div class="layer-items">
 
-                <div class="layer">
-
-                    <div class="layer-label">
-                        Layer 8 · Feedback Loop
+                    <div class="layer-item">
+                        Food Database
                     </div>
 
-                    <div class="architecture-row">
+                    <div class="layer-item">
+                        Nutrition Data
+                    </div>
 
-                        <div class="architecture-node action">
+                    <div class="layer-item">
+                        Price Data
+                    </div>
 
-                            <div class="node-icon">F</div>
+                    <div class="layer-item">
+                        Historical Prices
+                    </div>
 
-                            <h3>Follow-Up Tracking</h3>
+                    <div class="layer-item">
+                        Recipes
+                    </div>
 
-                            <p>
-                                Monitor appointment and
-                                follow-up completion.
-                            </p>
+                    <div class="layer-item">
+                        Shelf Life
+                    </div>
 
-                        </div>
+                    <div class="layer-item">
+                        Ingredients
+                    </div>
 
+                    <div class="layer-item">
+                        Inventory
+                    </div>
 
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
+                </div>
 
-
-                        <div class="architecture-node ai">
-
-                            <div class="node-icon">↻</div>
-
-                            <h3>Context Update</h3>
-
-                            <p>
-                                New records are incorporated
-                                into the contextual profile.
-                            </p>
-
-                        </div>
+            </div>
 
 
-                        <div class="horizontal-arrow">
-                            →
-                        </div>
+            <div class="architecture-layer reveal">
+
+                <div class="layer-label">
+
+                    <div>
+                        <strong>
+                            Intelligence Layer
+                        </strong>
+
+                        <span>
+                            Decision engine
+                        </span>
+                    </div>
+
+                </div>
 
 
-                        <div class="architecture-node ml">
+                <div class="layer-items">
 
-                            <div class="node-icon">R</div>
+                    <div class="layer-item">
+                        Nutrition Engine
+                    </div>
 
-                            <h3>Risk Re-evaluation</h3>
+                    <div class="layer-item">
+                        Feasibility Engine
+                    </div>
 
-                            <p>
-                                Updated context is evaluated
-                                again when new information arrives.
-                            </p>
+                    <div class="layer-item">
+                        Optimization Engine
+                    </div>
 
-                        </div>
+                    <div class="layer-item">
+                        Price Analysis
+                    </div>
 
+                    <div class="layer-item">
+                        Constraint Resolver
+                    </div>
+
+                    <div class="layer-item">
+                        Waste Optimizer
+                    </div>
+
+                    <div class="layer-item">
+                        Purchase Optimizer
+                    </div>
+
+                    <div class="layer-item">
+                        Adaptive Model
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-layer reveal">
+
+                <div class="layer-label">
+
+                    <div>
+                        <strong>
+                            Generative AI Layer
+                        </strong>
+
+                        <span>
+                            Natural language generation
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="layer-items">
+
+                    <div class="layer-item">
+                        Meal Explanation
+                    </div>
+
+                    <div class="layer-item">
+                        Recipe Generation
+                    </div>
+
+                    <div class="layer-item">
+                        Cooking Instructions
+                    </div>
+
+                    <div class="layer-item">
+                        Recommendations
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-layer reveal">
+
+                <div class="layer-label">
+
+                    <div>
+                        <strong>
+                            Application Layer
+                        </strong>
+
+                        <span>
+                            User interaction
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="layer-items">
+
+                    <div class="layer-item">
+                        Meal Planner
+                    </div>
+
+                    <div class="layer-item">
+                        Grocery Planner
+                    </div>
+
+                    <div class="layer-item">
+                        Inventory
+                    </div>
+
+                    <div class="layer-item">
+                        Budget Monitor
+                    </div>
+
+                    <div class="layer-item">
+                        Recipe View
+                    </div>
+
+                    <div class="layer-item">
+                        Analytics
+                    </div>
+
+                    <div class="layer-item">
+                        Alerts
+                    </div>
+
+                    <div class="layer-item">
+                        Replanning
                     </div>
 
                 </div>
@@ -1714,77 +2463,551 @@
 
 
 <!-- =========================================================
-     RAG ARCHITECTURE
+     06 FEATURES
 ========================================================= -->
 
-<section>
+<section class="section section-alt" id="features">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>How RAG Works in the Project</h2>
+            <span class="section-number">
+                06 — Research Features
+            </span>
 
-            <p>
-                RAG is used to retrieve relevant information before
-                generating contextual explanations or answering queries.
+            <h2 class="section-title">
+                High-Impact Features
+            </h2>
+
+            <p class="section-description">
+                These features are intended to provide the research
+                differentiation of the proposed system.
             </p>
 
         </div>
 
 
-        <div class="card rag-flow">
+        <div class="table-wrapper reveal">
 
-            <div class="rag-columns">
+            <table>
 
-                <div class="rag-box">
+                <thead>
 
-                    <h3>Structured Information</h3>
+                    <tr>
+                        <th>
+                            Feature
+                        </th>
 
-                    <ul>
-                        <li>Patient demographics</li>
-                        <li>Vital measurements</li>
-                        <li>Laboratory results</li>
-                        <li>Visit history</li>
-                        <li>Appointments</li>
-                    </ul>
+                        <th>
+                            What It Does
+                        </th>
 
+                        <th>
+                            Research Role
+                        </th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Budget Feasibility Intelligence
+                        </td>
+
+                        <td>
+                            Determines whether the requested nutritional
+                            target can be achieved within the available budget.
+                        </td>
+
+                        <td>
+                            Constraint feasibility
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Nutrient-per-Rupee Optimization
+                        </td>
+
+                        <td>
+                            Searches for food combinations that maximize
+                            nutritional utility relative to expenditure.
+                        </td>
+
+                        <td>
+                            Economic optimization
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Price-Shock Recovery
+                        </td>
+
+                        <td>
+                            Detects significant price increases and
+                            re-optimizes affected food allocations.
+                        </td>
+
+                        <td>
+                            Temporal adaptation
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Constraint Conflict Resolution
+                        </td>
+
+                        <td>
+                            Identifies infeasible combinations and recommends
+                            which constraint could be relaxed.
+                        </td>
+
+                        <td>
+                            Decision intelligence
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Adaptive Budget Reallocation
+                        </td>
+
+                        <td>
+                            Redistributes unused budget across food categories
+                            according to remaining requirements.
+                        </td>
+
+                        <td>
+                            Dynamic resource allocation
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Purchase Timing Optimization
+                        </td>
+
+                        <td>
+                            Determines when ingredients should be purchased
+                            using price, shelf life and consumption patterns.
+                        </td>
+
+                        <td>
+                            Procurement optimization
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Ingredient Reusability
+                        </td>
+
+                        <td>
+                            Favors ingredients that can be efficiently used
+                            across multiple meals.
+                        </td>
+
+                        <td>
+                            Resource efficiency
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Leftover-Aware Planning
+                        </td>
+
+                        <td>
+                            Uses remaining ingredients as inputs to future
+                            meal generation and optimization.
+                        </td>
+
+                        <td>
+                            Closed-loop planning
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Cooking-Energy Optimization
+                        </td>
+
+                        <td>
+                            Estimates preparation energy cost alongside
+                            ingredient cost.
+                        </td>
+
+                        <td>
+                            Total-cost modeling
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Multi-Person Shared Meal Optimization
+                        </td>
+
+                        <td>
+                            Generates common meals with different portions
+                            for people with different goals.
+                        </td>
+
+                        <td>
+                            Household optimization
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Food-Economic Digital Model
+                        </td>
+
+                        <td>
+                            Maintains a longitudinal representation of
+                            spending, consumption, inventory and preferences.
+                        </td>
+
+                        <td>
+                            Longitudinal adaptation
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     07 METHODOLOGY
+========================================================= -->
+
+<section class="section" id="methodology">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                07 — Methodology
+            </span>
+
+            <h2 class="section-title">
+                Proposed Method
+            </h2>
+
+            <p class="section-description">
+                The system combines deterministic mathematical optimization
+                with AI-based natural-language generation.
+            </p>
+
+        </div>
+
+
+        <div class="methodology">
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    01
                 </div>
 
+                <div>
 
-                <div class="rag-box">
-
-                    <h3>Unstructured Information</h3>
-
-                    <ul>
-                        <li>Clinical reports</li>
-                        <li>Doctor notes</li>
-                        <li>Discharge summaries</li>
-                        <li>Uploaded documents</li>
-                        <li>Clinical descriptions</li>
-                    </ul>
-
-                </div>
-
-
-                <div class="rag-center">
-
-                    <h3>Hybrid RAG</h3>
+                    <h3>
+                        Context Acquisition
+                    </h3>
 
                     <p>
-                        Relevant records are retrieved from both
-                        structured and semantic sources.
+                        Collect goal, budget, diet type, activity level,
+                        food preferences, cooking time, kitchen equipment
+                        and household requirements.
                     </p>
 
-                    <br>
+                </div>
 
-                    <strong style="font-size:12px;">
-                        Retrieve → Rank → Build Context → Generate
-                    </strong>
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Nutritional Requirement Estimation
+                    </h3>
+
+                    <p>
+                        Estimate target energy and nutritional requirements
+                        using the user's supplied profile and selected goal.
+                    </p>
 
                 </div>
 
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Economic Feasibility Analysis
+                    </h3>
+
+                    <p>
+                        Determine whether the desired nutritional target can
+                        be achieved under the available monetary constraint.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Candidate Food Selection
+                    </h3>
+
+                    <p>
+                        Filter candidate foods according to diet,
+                        preferences, price, nutritional properties,
+                        shelf life and kitchen requirements.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h3>
+                        Multi-Objective Optimization
+                    </h3>
+
+                    <p>
+                        Optimize quantities using cost, nutrition,
+                        ingredient reuse, food waste, cooking time
+                        and user preferences.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h3>
+                        Meal Allocation
+                    </h3>
+
+                    <p>
+                        Distribute optimized ingredients across daily meals
+                        while maintaining the required nutritional targets.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h3>
+                        Generative Recipe Layer
+                    </h3>
+
+                    <p>
+                        Use the LLM to generate recipes and cooking
+                        instructions based on the already optimized
+                        ingredient set.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    08
+                </div>
+
+                <div>
+
+                    <h3>
+                        Inventory and Consumption Feedback
+                    </h3>
+
+                    <p>
+                        Track purchased quantities, consumed quantities,
+                        remaining ingredients and leftovers.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    09
+                </div>
+
+                <div>
+
+                    <h3>
+                        Temporal Price Analysis
+                    </h3>
+
+                    <p>
+                        Compare current prices with previous optimization
+                        states and identify significant economic changes.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="method-number">
+                    10
+                </div>
+
+                <div>
+
+                    <h3>
+                        Adaptive Re-Optimization
+                    </h3>
+
+                    <p>
+                        Recalculate affected decisions while attempting to
+                        preserve the user's highest-priority constraints.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="formula reveal">
+
+            <div class="formula-title">
+                Optimization Model — Conceptual
             </div>
+
+            <code>
+Objective =
+w₁ × Cost Efficiency
++ w₂ × Nutritional Adequacy
++ w₃ × Ingredient Reusability
++ w₄ × Waste Reduction
++ w₅ × Preference Satisfaction
++ w₆ × Cooking Feasibility
+
+Subject to:
+
+Total Cost ≤ Available Budget
+
+Calories ≥ Required Calories
+
+Protein ≥ Required Protein
+
+Required Nutritional Constraints Satisfied
+
+Cooking Time ≤ User Limit
+
+Required Kitchen Equipment Available
+
+Dietary Restrictions Satisfied
+
+Food Quantity ≤ Practical Consumption Capacity
+            </code>
 
         </div>
 
@@ -1794,74 +3017,188 @@
 
 
 <!-- =========================================================
-     RISK STRATIFICATION
+     08 PROBLEMS SOLVED
 ========================================================= -->
 
-<section>
+<section class="section section-alt">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Risk Stratification</h2>
+            <span class="section-number">
+                08 — Impact
+            </span>
 
-            <p>
-                The trained ML model converts relevant patient features
-                into a risk score and category.
-            </p>
+            <h2 class="section-title">
+                Problems Solved
+            </h2>
 
         </div>
 
 
-        <div class="risk-grid">
+        <div class="grid">
 
-            <div class="risk-card">
+            <article class="card reveal">
 
-                <span class="risk-label low">
-                    LOW RISK
+                <span class="card-number">
+                    01
                 </span>
 
-                <h3>Routine Monitoring</h3>
+                <h3>
+                    Financial Constraint
+                </h3>
 
                 <p>
-                    No significant risk pattern detected.
-                    Continue normal monitoring and scheduled follow-up.
+                    Keeps the generated food allocation within the
+                    specified monetary limit.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="risk-card">
+            <article class="card reveal">
 
-                <span class="risk-label medium">
-                    MODERATE RISK
+                <span class="card-number">
+                    02
                 </span>
 
-                <h3>Closer Monitoring</h3>
+                <h3>
+                    Price Volatility
+                </h3>
 
                 <p>
-                    The system identifies factors that may require
-                    additional observation or professional review.
+                    Allows the plan to adapt when important grocery
+                    prices change.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="risk-card">
+            <article class="card reveal">
 
-                <span class="risk-label high">
-                    HIGH RISK
+                <span class="card-number">
+                    03
                 </span>
 
-                <h3>Priority Review</h3>
+                <h3>
+                    Nutritional Inefficiency
+                </h3>
 
                 <p>
-                    A significant risk pattern is detected and the
-                    intervention workflow can generate an alert and
-                    follow-up recommendation.
+                    Searches for better nutritional value within
+                    limited spending capacity.
                 </p>
 
-            </div>
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    04
+                </span>
+
+                <h3>
+                    Food Waste
+                </h3>
+
+                <p>
+                    Uses inventory and leftovers to reduce unnecessary
+                    food purchasing.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    05
+                </span>
+
+                <h3>
+                    Unrealistic Goals
+                </h3>
+
+                <p>
+                    Detects when a requested nutritional target is
+                    incompatible with the available resources.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    06
+                </span>
+
+                <h3>
+                    Planning Complexity
+                </h3>
+
+                <p>
+                    Converts multiple constraints into an actionable
+                    grocery and meal plan.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    07
+                </span>
+
+                <h3>
+                    Cooking Limitations
+                </h3>
+
+                <p>
+                    Selects meals compatible with available equipment
+                    and preparation time.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    08
+                </span>
+
+                <h3>
+                    Household Differences
+                </h3>
+
+                <p>
+                    Supports different nutritional goals within a
+                    shared household food plan.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    09
+                </span>
+
+                <h3>
+                    Static Recommendations
+                </h3>
+
+                <p>
+                    Continuously updates planning decisions using
+                    changing context.
+                </p>
+
+            </article>
 
         </div>
 
@@ -1871,133 +3208,162 @@
 
 
 <!-- =========================================================
-     FEATURES
+     09 USAGE
 ========================================================= -->
 
-<section>
+<section class="section">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Implemented Features</h2>
+            <span class="section-number">
+                09 — Usage
+            </span>
 
-            <p>
-                The following features form the complete proposed system.
-            </p>
+            <h2 class="section-title">
+                How a User Interacts With the System
+            </h2>
 
         </div>
 
 
-        <div class="feature-grid">
+        <div class="workflow">
 
-            <div class="card feature">
-                <div class="feature-number">01</div>
-                <h3>Data Integration</h3>
-                <p>
-                    Centralized integration of structured and
-                    unstructured hospital information.
-                </p>
-            </div>
+            <article class="workflow-step reveal">
 
-            <div class="card feature">
-                <div class="feature-number">02</div>
-                <h3>Data Quality Detection</h3>
-                <p>
-                    Detect missing, duplicate, inconsistent and
-                    invalid records.
-                </p>
-            </div>
+                <span class="step-index">
+                    INPUT
+                </span>
 
-            <div class="card feature">
-                <div class="feature-number">03</div>
-                <h3>Hybrid RAG Retrieval</h3>
-                <p>
-                    Retrieve relevant structured and semantic
-                    information for contextual reasoning.
-                </p>
-            </div>
+                <h3>
+                    Set Goal
+                </h3>
 
-            <div class="card feature">
-                <div class="feature-number">04</div>
-                <h3>Dynamic Profile</h3>
                 <p>
-                    Maintain a contextual profile using current
-                    and historical information.
+                    Weight loss, weight gain or maintenance.
                 </p>
-            </div>
 
-            <div class="card feature">
-                <div class="feature-number">05</div>
-                <h3>Risk Prediction</h3>
-                <p>
-                    Generate a numerical risk score using
-                    a trained machine learning model.
-                </p>
-            </div>
+            </article>
 
-            <div class="card feature">
-                <div class="feature-number">06</div>
-                <h3>Explainable AI</h3>
-                <p>
-                    Use SHAP to identify the features that
-                    influenced the model prediction.
-                </p>
-            </div>
 
-            <div class="card feature">
-                <div class="feature-number">07</div>
-                <h3>Longitudinal Analysis</h3>
-                <p>
-                    Compare records across visits and identify
-                    changing risk patterns.
-                </p>
-            </div>
+            <article class="workflow-step reveal">
 
-            <div class="card feature">
-                <div class="feature-number">08</div>
-                <h3>Early-Warning Detection</h3>
-                <p>
-                    Detect increasing risk trends before they
-                    become severe.
-                </p>
-            </div>
+                <span class="step-index">
+                    INPUT
+                </span>
 
-            <div class="card feature">
-                <div class="feature-number">09</div>
-                <h3>Interactive Visualization</h3>
-                <p>
-                    Display risk distributions, trends,
-                    contributing factors and follow-up status.
-                </p>
-            </div>
+                <h3>
+                    Set Budget
+                </h3>
 
-            <div class="card feature">
-                <div class="feature-number">10</div>
-                <h3>Natural-Language Queries</h3>
                 <p>
-                    Allow authorized staff to ask questions
-                    about relevant records using natural language.
+                    Daily, weekly or monthly food budget.
                 </p>
-            </div>
 
-            <div class="card feature">
-                <div class="feature-number">11</div>
-                <h3>Adaptive Notifications</h3>
-                <p>
-                    Generate contextual alerts and follow-up
-                    communication based on risk state.
-                </p>
-            </div>
+            </article>
 
-            <div class="card feature">
-                <div class="feature-number">12</div>
-                <h3>Continuous Re-evaluation</h3>
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    INPUT
+                </span>
+
+                <h3>
+                    Set Lifestyle
+                </h3>
+
                 <p>
-                    Incorporate new information and update
-                    the risk assessment over time.
+                    Activity level, gym usage and cooking schedule.
                 </p>
-            </div>
+
+            </article>
+
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    INPUT
+                </span>
+
+                <h3>
+                    Set Restrictions
+                </h3>
+
+                <p>
+                    Vegetarian, vegan, non-vegetarian and food preferences.
+                </p>
+
+            </article>
+
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    INPUT
+                </span>
+
+                <h3>
+                    Set Kitchen
+                </h3>
+
+                <p>
+                    Stove, refrigerator, microwave, oven and other resources.
+                </p>
+
+            </article>
+
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    SYSTEM
+                </span>
+
+                <h3>
+                    Analyze
+                </h3>
+
+                <p>
+                    Calculate nutritional and economic requirements.
+                </p>
+
+            </article>
+
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    SYSTEM
+                </span>
+
+                <h3>
+                    Optimize
+                </h3>
+
+                <p>
+                    Generate the most suitable food allocation.
+                </p>
+
+            </article>
+
+
+            <article class="workflow-step reveal">
+
+                <span class="step-index">
+                    OUTPUT
+                </span>
+
+                <h3>
+                    Follow Plan
+                </h3>
+
+                <p>
+                    Grocery list, meals, quantities and cooking instructions.
+                </p>
+
+            </article>
 
         </div>
 
@@ -2007,260 +3373,376 @@
 
 
 <!-- =========================================================
-     TECHNOLOGY STACK
+     10 TECHNOLOGY
 ========================================================= -->
 
-<section>
+<section class="section section-alt" id="technology">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Technology Stack</h2>
+            <span class="section-number">
+                10 — Technology Stack
+            </span>
 
-            <p>
-                A single technology is selected for each major layer
-                to keep the implementation focused and maintainable.
-            </p>
+            <h2 class="section-title">
+                Tools Used for Development
+            </h2>
 
         </div>
 
 
-        <div class="technology">
+        <div class="tech-grid">
 
-            <div class="card tech-card">
+            <article class="tech-card reveal">
 
-                <div class="tech-layer">
+                <div class="tech-icon">
+                    UI
+                </div>
+
+                <h3>
                     Frontend
-                </div>
-
-                <h3>React.js</h3>
+                </h3>
 
                 <p>
-                    Used to build the interactive dashboard,
-                    patient views and visualization interface.
+                    React.js, Vite, HTML5, CSS3 and JavaScript.
                 </p>
 
-                <span class="tech-stack">
-                    React.js
-                </span>
-
-            </div>
+            </article>
 
 
-            <div class="card tech-card">
+            <article class="tech-card reveal">
 
-                <div class="tech-layer">
-                    Styling
+                <div class="tech-icon">
+                    API
                 </div>
 
-                <h3>Tailwind CSS</h3>
-
-                <p>
-                    Used for responsive interface design and
-                    reusable UI styling.
-                </p>
-
-                <span class="tech-stack">
-                    Tailwind CSS
-                </span>
-
-            </div>
-
-
-            <div class="card tech-card">
-
-                <div class="tech-layer">
+                <h3>
                     Backend
-                </div>
-
-                <h3>Spring Boot</h3>
+                </h3>
 
                 <p>
-                    Provides REST APIs, authentication,
-                    business logic and communication with MySQL.
+                    Java, Spring Boot and REST APIs.
                 </p>
 
-                <span class="tech-stack">
-                    Spring Boot
-                </span>
-
-            </div>
+            </article>
 
 
-            <div class="card tech-card">
+            <article class="tech-card reveal">
 
-                <div class="tech-layer">
+                <div class="tech-icon">
+                    DB
+                </div>
+
+                <h3>
                     Database
-                </div>
-
-                <h3>MySQL</h3>
+                </h3>
 
                 <p>
-                    Stores structured patient records,
-                    visits, risk results, alerts and follow-up data.
+                    MySQL for food, nutrition, prices, recipes,
+                    inventory and planning data.
                 </p>
 
-                <span class="tech-stack">
-                    MySQL
-                </span>
-
-            </div>
+            </article>
 
 
-            <div class="card tech-card">
+            <article class="tech-card reveal">
 
-                <div class="tech-layer">
-                    AI / RAG Service
+                <div class="tech-icon">
+                    AI
                 </div>
 
-                <h3>Python</h3>
-
-                <p>
-                    Handles document processing, embeddings,
-                    retrieval and machine-learning operations.
-                </p>
-
-                <span class="tech-stack">
-                    Python
-                </span>
-
-            </div>
-
-
-            <div class="card tech-card">
-
-                <div class="tech-layer">
-                    Vector Database
-                </div>
-
-                <h3>Qdrant</h3>
-
-                <p>
-                    Stores document embeddings and enables
-                    semantic retrieval for the RAG pipeline.
-                </p>
-
-                <span class="tech-stack">
-                    Qdrant
-                </span>
-
-            </div>
-
-
-            <div class="card tech-card">
-
-                <div class="tech-layer">
+                <h3>
                     Generative AI
-                </div>
-
-                <h3>Google Gemini</h3>
+                </h3>
 
                 <p>
-                    Generates contextual explanations and
-                    natural-language responses from retrieved information.
+                    Google Gemini API for natural-language generation,
+                    explanations and recipe generation.
                 </p>
 
-                <span class="tech-stack">
-                    Gemini API
-                </span>
-
-            </div>
+            </article>
 
 
-            <div class="card tech-card">
+            <article class="tech-card reveal">
 
-                <div class="tech-layer">
-                    Explainability
+                <div class="tech-icon">
+                    OPT
                 </div>
 
-                <h3>SHAP</h3>
+                <h3>
+                    Optimization
+                </h3>
 
                 <p>
-                    Explains the contribution of individual
-                    features to the ML risk prediction.
+                    Linear programming, mixed-integer optimization and
+                    multi-objective optimization.
                 </p>
 
-                <span class="tech-stack">
-                    SHAP
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+            </article>
 
 
-<!-- =========================================================
-     COMPLETE LOOP
-========================================================= -->
+            <article class="tech-card reveal">
 
-<section>
-
-    <div class="container">
-
-        <div class="loop">
-
-            <h2>Complete Intelligence Loop</h2>
-
-            <div class="loop-flow">
-
-                <div class="loop-item">
-                    Hospital Data
+                <div class="tech-icon">
+                    ML
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Machine Learning
+                </h3>
 
-                <div class="loop-item">
+                <p>
+                    Python, NumPy, Pandas and Scikit-learn for
+                    data processing and predictive components.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    DATA
+                </div>
+
+                <h3>
                     Data Processing
+                </h3>
+
+                <p>
+                    Structured nutrition, food-price, recipe and
+                    ingredient datasets.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    DEV
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Development
+                </h3>
 
-                <div class="loop-item">
-                    Hybrid RAG
+                <p>
+                    Git, GitHub and VS Code for development and
+                    version control.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    WEB
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Deployment
+                </h3>
 
-                <div class="loop-item">
-                    Context
+                <p>
+                    Vercel for the frontend and Railway for
+                    backend deployment.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    VIS
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Visualization
+                </h3>
 
-                <div class="loop-item">
-                    ML Risk
+                <p>
+                    Chart.js or Recharts for budget, nutrition,
+                    spending and optimization analytics.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    REST
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Communication
+                </h3>
 
-                <div class="loop-item">
-                    Explain
+                <p>
+                    RESTful APIs for communication between the
+                    frontend, backend and intelligence services.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card reveal">
+
+                <div class="tech-icon">
+                    SEC
                 </div>
 
-                <div class="loop-arrow">→</div>
+                <h3>
+                    Session Handling
+                </h3>
 
-                <div class="loop-item">
-                    Intervention
+                <p>
+                    Local/session state can maintain the user's temporary
+                    plan without requiring registration or login.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     11 EVALUATION
+========================================================= -->
+
+<section class="section" id="evaluation">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                11 — Research Evaluation
+            </span>
+
+            <h2 class="section-title">
+                How the Project Will Be Evaluated
+            </h2>
+
+            <p class="section-description">
+                The research contribution should be demonstrated through
+                measurable experiments rather than only through a working UI.
+            </p>
+
+        </div>
+
+
+        <div class="metrics">
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Cost
                 </div>
 
-                <div class="loop-arrow">→</div>
-
-                <div class="loop-item">
-                    Follow-up
+                <div class="metric-name">
+                    Budget deviation
                 </div>
 
-                <div class="loop-arrow">→</div>
+            </div>
 
-                <div class="loop-item">
-                    New Data
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Nutrition
                 </div>
 
-                <div class="loop-arrow">↻</div>
+                <div class="metric-name">
+                    Nutritional deviation
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    N/₹
+                </div>
+
+                <div class="metric-name">
+                    Nutritional value per rupee
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Waste
+                </div>
+
+                <div class="metric-name">
+                    Food waste reduction
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Reuse
+                </div>
+
+                <div class="metric-name">
+                    Ingredient utilization
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Recovery
+                </div>
+
+                <div class="metric-name">
+                    Price-shock recovery
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Feasible
+                </div>
+
+                <div class="metric-name">
+                    Constraint detection
+                </div>
+
+            </div>
+
+
+            <div class="metric reveal">
+
+                <div class="metric-value">
+                    Time
+                </div>
+
+                <div class="metric-name">
+                    Optimization latency
+                </div>
 
             </div>
 
@@ -2272,56 +3754,586 @@
 
 
 <!-- =========================================================
-     PROJECT SUMMARY
+     12 EXPERIMENTS
 ========================================================= -->
 
-<section>
+<section class="section section-alt">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-header reveal">
 
-            <h2>Project Summary</h2>
+            <span class="section-number">
+                12 — Experimental Design
+            </span>
+
+            <h2 class="section-title">
+                Proposed Research Experiments
+            </h2>
 
         </div>
 
 
-        <div class="card idea-card">
+        <div class="grid">
 
-            <p>
+            <article class="card reveal">
 
-                <strong>
-                    A Context-Aware Intelligent Framework for Risk
-                    Stratification and Adaptive Intervention
-                </strong>
-                is an end-to-end intelligent decision-support framework
-                designed to transform hospital records into contextual
-                risk intelligence.
-                <br><br>
+                <span class="card-number">
+                    E1
+                </span>
 
-                The framework integrates structured and unstructured
-                information through a Hybrid RAG architecture. Relevant
-                historical and current information is retrieved to build
-                a dynamic contextual profile. A machine learning model
-                then performs risk stratification, while SHAP provides
-                feature-level explainability.
-                <br><br>
+                <h3>
+                    Budget Optimization
+                </h3>
 
-                The resulting intelligence is presented through an
-                interactive visualization layer and can trigger adaptive
-                interventions such as alerts and follow-up notifications.
-                The system then incorporates new records into the context,
-                allowing risk assessment to be continuously re-evaluated.
-                <br><br>
+                <p>
+                    Compare the proposed optimizer against a baseline
+                    meal-planning strategy under the same nutritional goals.
+                </p>
 
-                The overall contribution is therefore not simply
-                <strong>prediction</strong> or <strong>visualization</strong>,
-                but the integration of
-                <strong>retrieval, contextual understanding, prediction,
-                explanation and adaptive intervention</strong>
-                into a single closed-loop framework.
+            </article>
 
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    E2
+                </span>
+
+                <h3>
+                    Price Shock
+                </h3>
+
+                <p>
+                    Simulate 10%, 20%, 30% and 50% price changes and
+                    measure how effectively the system restores feasibility.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    E3
+                </span>
+
+                <h3>
+                    Waste Reduction
+                </h3>
+
+                <p>
+                    Compare normal grocery planning with
+                    inventory-aware and leftover-aware planning.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    E4
+                </span>
+
+                <h3>
+                    Constraint Conflicts
+                </h3>
+
+                <p>
+                    Introduce impossible combinations and evaluate
+                    whether the system identifies and resolves them.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    E5
+                </span>
+
+                <h3>
+                    Household Planning
+                </h3>
+
+                <p>
+                    Compare independent meal plans with shared-meal
+                    optimization for multiple people.
+                </p>
+
+            </article>
+
+
+            <article class="card reveal">
+
+                <span class="card-number">
+                    E6
+                </span>
+
+                <h3>
+                    Energy-Aware Planning
+                </h3>
+
+                <p>
+                    Compare ingredient-only cost optimization against
+                    combined food and cooking-energy cost.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     13 IMPLEMENTATION ROADMAP
+========================================================= -->
+
+<section class="section" id="implementation">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                13 — Implementation Roadmap
+            </span>
+
+            <h2 class="section-title">
+                Development Phases
+            </h2>
+
+            <p class="section-description">
+                The project should be developed incrementally, beginning
+                with the optimization core before adding the adaptive AI layer.
             </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    01
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Dataset & MySQL Database
+                    </h3>
+
+                    <p>
+                        Build food, nutrition, price, recipe, ingredient,
+                        shelf-life and inventory datasets.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    02
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Nutrition Engine
+                    </h3>
+
+                    <p>
+                        Implement nutritional target estimation and
+                        goal-specific requirements.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    03
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Optimization Engine
+                    </h3>
+
+                    <p>
+                        Implement budget feasibility, food selection,
+                        quantity optimization and constraint handling.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    04
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Grocery & Meal Planner
+                    </h3>
+
+                    <p>
+                        Convert optimized food quantities into weekly
+                        groceries and daily meals.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    05
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Generative AI Layer
+                    </h3>
+
+                    <p>
+                        Integrate Gemini for recipe generation, cooking
+                        instructions and natural-language explanations.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    06
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Inventory & Leftover Engine
+                    </h3>
+
+                    <p>
+                        Track purchased food, remaining quantities,
+                        leftovers and estimated waste.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    07
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Price Adaptation
+                    </h3>
+
+                    <p>
+                        Detect meaningful price changes and trigger
+                        selective plan re-optimization.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="phase reveal">
+
+                <div class="phase-dot">
+                    08
+                </div>
+
+                <div class="phase-content">
+
+                    <h3>
+                        Evaluation & Research
+                    </h3>
+
+                    <p>
+                        Create baselines, run controlled experiments,
+                        measure performance and document results.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     14 RESEARCH CONTRIBUTION
+========================================================= -->
+
+<section class="section section-alt">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                14 — Research Contribution
+            </span>
+
+            <h2 class="section-title">
+                What Makes the Project Different?
+            </h2>
+
+        </div>
+
+
+        <div class="contribution">
+
+            <article class="contribution-card primary reveal">
+
+                <h3>
+                    Core Research Idea
+                </h3>
+
+                <p>
+                    Personalized food planning is formulated as a
+                    dynamic multi-objective resource-allocation problem
+                    where budget, nutrition, price variation, inventory,
+                    cooking limitations and user preferences are optimized
+                    together.
+                </p>
+
+            </article>
+
+
+            <article class="contribution-card reveal">
+
+                <h3>
+                    Adaptive Decision Layer
+                </h3>
+
+                <p>
+                    Instead of producing one static recommendation, the
+                    system continuously evaluates environmental and
+                    user-specific changes and selectively re-optimizes
+                    affected decisions.
+                </p>
+
+            </article>
+
+
+            <article class="contribution-card reveal">
+
+                <h3>
+                    Economic-Nutritional Trade-off
+                </h3>
+
+                <p>
+                    The system does not simply minimize food cost. It
+                    attempts to maximize nutritional adequacy and resource
+                    utilization while respecting monetary constraints.
+                </p>
+
+            </article>
+
+
+            <article class="contribution-card reveal">
+
+                <h3>
+                    Closed-Loop Planning
+                </h3>
+
+                <p>
+                    Purchases, consumption, leftovers and waste become
+                    feedback signals for subsequent planning cycles.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     15 FINAL OUTPUT
+========================================================= -->
+
+<section class="section" id="output">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-number">
+                15 — Expected Output
+            </span>
+
+            <h2 class="section-title">
+                What the Final System Produces
+            </h2>
+
+        </div>
+
+
+        <div class="output-list">
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Personalized Food Plan
+                </h3>
+
+                <p>
+                    Daily, weekly or monthly plan based on nutritional
+                    goals and available resources.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Optimized Grocery Basket
+                </h3>
+
+                <p>
+                    Quantity-based grocery list designed around the
+                    available budget.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Meal Schedule
+                </h3>
+
+                <p>
+                    Breakfast, lunch, snacks and dinner allocation.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Cooking Instructions
+                </h3>
+
+                <p>
+                    Practical recipes based on the selected ingredients
+                    and available kitchen equipment.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Budget Monitor
+                </h3>
+
+                <p>
+                    Tracks planned, spent and remaining food expenditure.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Adaptive Replan
+                </h3>
+
+                <p>
+                    Updates the plan when prices, inventory or relevant
+                    constraints change.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Waste Insights
+                </h3>
+
+                <p>
+                    Identifies unused ingredients and potential food waste.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Nutritional Analytics
+                </h3>
+
+                <p>
+                    Shows nutritional target achievement and deviations.
+                </p>
+
+            </article>
+
+
+            <article class="output-item reveal">
+
+                <h3>
+                    Feasibility Explanation
+                </h3>
+
+                <p>
+                    Explains why a particular target is feasible,
+                    infeasible or requires constraint relaxation.
+                </p>
+
+            </article>
 
         </div>
 
@@ -2333,11 +4345,245 @@
 </main>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
 
-    A Context-Aware Intelligent Framework for Risk Stratification and Adaptive Intervention
+    <div class="container">
+
+        <h2>
+            Contextual-Temporal Intelligence Framework
+        </h2>
+
+        <p>
+            Adaptive resource allocation for personalized food planning
+            under dynamic economic and nutritional constraints.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-bottom">
+
+            <span>
+                Research Concept
+            </span>
+
+            <span>
+                React.js · Spring Boot · MySQL · Python · Gemini API
+            </span>
+
+        </div>
+
+    </div>
 
 </footer>
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="top-button"
+    id="topButton"
+    aria-label="Back to top"
+    title="Back to top"
+>
+    ↑
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /*
+     * =========================================================
+     * Scroll Reveal
+     * =========================================================
+     */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.08,
+                rootMargin: "0px 0px -30px 0px"
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /*
+     * =========================================================
+     * Back To Top
+     * =========================================================
+     */
+
+    const topButton =
+        document.getElementById("topButton");
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 500) {
+
+                topButton.classList.add("show");
+
+            } else {
+
+                topButton.classList.remove("show");
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    topButton.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+
+    /*
+     * =========================================================
+     * Active Navigation
+     * =========================================================
+     */
+
+    const sections =
+        document.querySelectorAll("main section[id]");
+
+    const navLinks =
+        document.querySelectorAll(".nav-link");
+
+
+    const sectionObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    navLinks.forEach(link => {
+
+                        link.style.color = "";
+
+                        link.style.background = "";
+
+                    });
+
+
+                    const activeLink =
+                        document.querySelector(
+                            `.nav-link[href="#${entry.target.id}"]`
+                        );
+
+
+                    if (activeLink) {
+
+                        activeLink.style.color =
+                            "var(--primary)";
+
+                        activeLink.style.background =
+                            "var(--primary-soft)";
+
+                    }
+
+                });
+
+            },
+            {
+                rootMargin:
+                    "-25% 0px -65% 0px"
+            }
+        );
+
+
+    sections.forEach(section => {
+
+        sectionObserver.observe(section);
+
+    });
+
+
+    /*
+     * =========================================================
+     * Prevent broken anchor jump on initial load
+     * =========================================================
+     */
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            if (window.location.hash) {
+
+                setTimeout(() => {
+
+                    const target =
+                        document.querySelector(
+                            window.location.hash
+                        );
+
+                    if (target) {
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }, 100);
+
+            }
+
+        }
+    );
+
+</script>
 
 
 </body>
